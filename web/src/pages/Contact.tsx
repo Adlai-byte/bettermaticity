@@ -49,10 +49,9 @@ const ROUTES: { to: string; key: string; descKey: string; external?: boolean }[]
     descKey: 'contact-page-route-officials',
   },
   {
-    to: 'https://mati.gov.ph/',
-    key: 'contact-page-route-website',
-    descKey: 'contact-page-route-website-desc',
-    external: true,
+    to: '/government/links',
+    key: 'links-title',
+    descKey: 'nav-desc-official-links',
   },
 ];
 

@@ -5,16 +5,25 @@ import { AppLink } from '@/components/AppLink';
 import { DirectoryList } from '@/components/DirectoryList';
 import { OfficialChannels } from '@/components/OfficialChannels';
 import { useLanguage } from '@/hooks/useLanguage';
-import { Container, PageHeader, Section } from '@/components/primitives';
-import { departments, type GovDepartment } from '@/lib/govDirectory';
+import { Container, PageHeader, Section, SectionHead } from '@/components/primitives';
+import { formatChangeDate } from '@/lib/changelog';
+import {
+  cityOfficeCount,
+  cityOfficeGroups,
+  cityOfficesCheckedOn,
+  cityOfficesSource,
+  departments,
+  type GovDepartment,
+} from '@/lib/govDirectory';
 
 const withGuide = departments.filter((d) => d.to.startsWith('/service-details/')).length;
 const withHotline = departments.filter((d) => d.verifiedPhone).length;
 
-// City office directory in BetterSanFernando's /government/offices style. Only phone
-// numbers from a sourced dataset are shown; the rest defer to the office.
+// City office directory in BetterSanFernando's /government/offices style: the offices
+// with a service guide first, then the City's full list of departments and offices. Only
+// phone numbers from a sourced dataset are shown; the rest defer to the office.
 export default function GovernmentOffices() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const name = (d: GovDepartment) => (d.titleKey ? t(d.titleKey) : (d.title ?? ''));
   // Client-only filter; starts empty so every office is in the prerendered HTML.
   const [query, setQuery] = useState('');
@@ -47,16 +56,20 @@ export default function GovernmentOffices() {
         ]}
         aside={{ label: t('gov-offices-about-label'), body: t('gov-offices-about-body') }}
         stats={[
-          { label: t('gov-stat-offices'), value: departments.length },
+          {
+            label: t('gov-stat-offices'),
+            value: cityOfficeCount,
+            caption: t('gov-stat-offices-caption', { count: cityOfficeGroups.length }),
+          },
           {
             label: t('gov-stat-guides'),
             value: withGuide,
-            caption: t('gov-stat-of', { total: departments.length }),
+            caption: t('gov-stat-of', { total: cityOfficeCount }),
           },
           {
             label: t('gov-stat-hotline'),
             value: withHotline,
-            caption: t('gov-stat-of', { total: departments.length }),
+            caption: t('gov-stat-of', { total: cityOfficeCount }),
           },
         ]}
       />
@@ -125,6 +138,49 @@ export default function GovernmentOffices() {
               </div>
             )}
           />
+        </Container>
+      </Section>
+
+      <Section className="border-t border-line">
+        <Container>
+          <SectionHead
+            id="all-offices"
+            eyebrow={t('gov-offices-all-eyebrow')}
+            title={t('gov-offices-all-title')}
+            lede={t('gov-offices-all-lede', {
+              count: cityOfficeCount,
+              groups: cityOfficeGroups.length,
+            })}
+          />
+          <ul className="grid grid-cols-1 border-t border-l border-line md:grid-cols-2 lg:grid-cols-3">
+            {cityOfficeGroups.map((g) => (
+              <li key={g.name} className="border-r border-b border-line p-5">
+                <h3 className="text-sm font-bold text-heading">{g.name}</h3>
+                <ul className="mt-2 space-y-1 text-sm leading-6 text-ink-muted">
+                  {g.offices.map((o) => (
+                    <li key={o.name}>{o.name}</li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-4 text-xs leading-5 text-ink-muted">
+            {t('gov-offices-all-source')}{' '}
+            <a
+              href={cityOfficesSource.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-0.5 font-semibold text-royal hover:underline"
+            >
+              {cityOfficesSource.title}
+              <ArrowUpRight className="size-3.5" aria-hidden="true" />
+              <span className="sr-only"> ({t('service-new-tab')})</span>
+            </a>
+            {' · '}
+            {t('projects-checked-on', {
+              date: formatChangeDate(cityOfficesCheckedOn, language, 'medium'),
+            })}
+          </p>
         </Container>
       </Section>
 

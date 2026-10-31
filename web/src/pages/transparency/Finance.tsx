@@ -7,7 +7,15 @@ import { Seo } from '@/components/Seo';
 import { AppLink } from '@/components/AppLink';
 import { useLanguage } from '@/hooks/useLanguage';
 import { Band, PageHeader } from '@/components/primitives';
-import { annualFinancials as q, financialOutlook, fiscalYears, peso } from '@/lib/budgetData';
+import {
+  annualFinancials as q,
+  currentYear as cy,
+  financialOutlook,
+  fiscalYears,
+  pctOf,
+  peso,
+  specialFunds,
+} from '@/lib/budgetData';
 import { CHART_COLORS, CHART_GRID, chartFont, chartMonoFont } from '@/lib/charts';
 
 const CARD = 'min-w-0 border border-line bg-white';
@@ -66,6 +74,20 @@ function MetricCard({
   );
 }
 
+function SourceLink({ href, children }: { href: string; children: ReactNode }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-start gap-1 font-semibold text-royal hover:underline"
+    >
+      <span>{children}</span>
+      <ArrowUpRight className="mt-0.5 size-3.5 shrink-0" aria-hidden="true" />
+    </a>
+  );
+}
+
 function Meter({
   label,
   value,
@@ -100,8 +122,9 @@ function Meter({
 }
 
 // City finances, after BetterSanFernando's /transparency/finance: five reported years
-// side by side, the latest year in detail, the planning outlook, and the catalog of
-// official reports every figure comes from. Each year keeps its own source edition.
+// side by side, the latest year in detail, the current year to date against the City's
+// budget, the special funds, the planning outlook, and the catalog of official reports
+// every figure comes from. Each year keeps its own source edition.
 export default function Finance() {
   const { t } = useLanguage();
 
@@ -139,9 +162,9 @@ export default function Finance() {
 
   const expenditureRows = [
     { label: t('budget-general-public-services'), amount: q.expenditures.gps, color: '#2b62ee' },
-    { label: t('budget-social-services'), amount: q.expenditures.social, color: '#06a77d' },
+    { label: t('finance-social-excl-education'), amount: q.expenditures.social, color: '#06a77d' },
     { label: t('budget-economic-services'), amount: q.expenditures.economic, color: '#f77f00' },
-    { label: t('trans-sef'), amount: q.expenditures.sef ?? 0, color: '#b45b16' },
+    { label: t('finance-education-sef'), amount: q.expenditures.sef ?? 0, color: '#b45b16' },
     { label: t('trans-debt-operating'), amount: q.expenditures.debt, color: '#e01b24' },
     { label: t('trans-non-operating'), amount: q.expenditures.nonOperating, color: '#7357b6' },
   ];
@@ -161,22 +184,112 @@ export default function Finance() {
     { label: t('trans-ending-cash'), value: (y) => y.endingCashBalance, strong: true },
   ];
 
-  const catalog = [
-    ...[...fiscalYears].reverse().map((y) => ({
-      key: String(y.year),
-      period: y.period,
-      kind: t('finance-reported'),
-      title: y.source.title,
-      url: y.source.url,
-      pages: y.source.pages,
-      checkedOn: y.source.checkedOn,
-    })),
+  const sf = specialFunds;
+  const cyOperating = cy.expenditures.total - cy.expenditures.nonOperating;
+  const progressRows = [
+    {
+      label: t('finance-ytd-local'),
+      actual: cy.receipts.local,
+      target: cy.budget.localSourcesTarget,
+      kind: 'target',
+    },
+    {
+      label: t('finance-ytd-nta'),
+      actual: cy.receipts.nta,
+      target: cy.budget.ntaAllocation,
+      kind: 'allocation',
+    },
+    {
+      label: t('finance-ytd-operating'),
+      actual: cyOperating,
+      target: cy.budget.currentOperating,
+      kind: 'appropriation',
+    },
+    {
+      label: t('finance-ytd-capital'),
+      actual: cy.budget.actualCapitalOutlay,
+      target: cy.budget.capitalOutlay,
+      kind: 'appropriation',
+    },
+    {
+      label: t('finance-ytd-principal'),
+      actual: cy.budget.actualDebtPrincipal,
+      target: cy.budget.debtPrincipal,
+      kind: 'appropriation',
+    },
+  ];
+
+  // pages: printed page range of a DBM table; a workbook or portal file has none.
+  const catalog: {
+    key: string;
+    period: string;
+    kind: string;
+    title: string;
+    href: string;
+    pages?: number[];
+    checkedOn: string;
+  }[] = [
+    {
+      key: 'ytd',
+      period: cy.period,
+      kind: t('finance-ytd-kind'),
+      title: cy.source.title,
+      href: cy.source.url,
+      checkedOn: cy.source.checkedOn,
+    },
+    {
+      key: 'budget-2026',
+      period: 'FY2026',
+      kind: t('finance-budget-kind'),
+      title: cy.budget.source.title,
+      href: cy.budget.source.url,
+      checkedOn: cy.budget.source.checkedOn,
+    },
+    {
+      key: 'df-2026',
+      period: sf.developmentFund.period,
+      kind: t('finance-funds-kind'),
+      title: sf.developmentFund.source.title,
+      href: sf.developmentFund.source.url,
+      checkedOn: sf.developmentFund.source.checkedOn,
+    },
+    {
+      key: 'ldrrmf-2025',
+      period: sf.ldrrmf.period,
+      kind: t('finance-funds-kind'),
+      title: sf.ldrrmf.source.title,
+      href: sf.ldrrmf.source.url,
+      checkedOn: sf.ldrrmf.source.checkedOn,
+    },
+    ...[...fiscalYears].reverse().flatMap((y) => [
+      {
+        key: String(y.year),
+        period: y.period,
+        kind: t('finance-reported'),
+        title: y.source.title,
+        href: `${y.source.url}#page=3`,
+        pages: y.source.pages,
+        checkedOn: y.source.checkedOn,
+      },
+      ...('crossCheck' in y && y.crossCheck
+        ? [
+            {
+              key: `${y.year}-crosscheck`,
+              period: y.period,
+              kind: t('finance-crosscheck-kind'),
+              title: y.crossCheck.title,
+              href: y.crossCheck.url,
+              checkedOn: y.crossCheck.checkedOn,
+            },
+          ]
+        : []),
+    ]),
     ...financialOutlook.map((o) => ({
       key: `outlook-${o.year}`,
       period: `FY${o.year}`,
       kind: t('trans-planning'),
       title: o.source.label,
-      url: o.source.url,
+      href: `${o.source.url}#page=3`,
       pages: o.source.pages,
       checkedOn: q.source.checkedOn,
     })),
@@ -359,6 +472,152 @@ export default function Finance() {
         </div>
         <p className="mt-4 max-w-3xl text-sm leading-6 text-ink-muted">{t('trans-finance-note')}</p>
         <p className="mt-2 max-w-3xl text-sm leading-6 text-ink-muted">{t('trans-cash-note')}</p>
+        {'crossCheck' in q && q.crossCheck ? (
+          <p className="mt-2 max-w-3xl text-sm leading-6 text-ink-muted">
+            {t('finance-crosscheck-note')}{' '}
+            <SourceLink href={q.crossCheck.url}>{q.crossCheck.label}</SourceLink>
+          </p>
+        ) : null}
+      </Band>
+
+      <Band
+        id="year-to-date"
+        eyebrow={t('finance-ytd-eyebrow')}
+        title={t('finance-ytd-title')}
+        lede={t('finance-ytd-lede')}
+      >
+        <div className="mt-6 grid grid-cols-2 gap-4 lg:grid-cols-3">
+          <MetricCard
+            value={peso(cy.receipts.total)}
+            label={t('trans-total-receipts')}
+            meta={cy.period}
+          />
+          <MetricCard
+            value={peso(cy.expenditures.total)}
+            label={t('budget-total-expenditures')}
+            meta={cy.period}
+          />
+          <MetricCard
+            value={peso(cy.endingCashBalance)}
+            label={t('trans-ending-cash')}
+            meta={t('finance-ytd-as-of')}
+          />
+        </div>
+
+        <div className={`${CARD} mt-6 p-5`}>
+          <span className="mb-1 block text-sm font-semibold text-heading">
+            {t('finance-ytd-progress-title')}
+          </span>
+          <span className="mb-4 block text-xs text-ink-muted">
+            {t('finance-ytd-progress-help')}
+          </span>
+          <div className="grid gap-4">
+            {progressRows.map((row) => (
+              <Meter
+                key={row.label}
+                label={row.label}
+                value={t(`finance-ytd-of-${row.kind}`, {
+                  actual: peso(row.actual),
+                  target: peso(row.target),
+                  pct: pctOf(row.actual, row.target),
+                })}
+                pct={pctOf(row.actual, row.target)}
+                color={CHART_COLORS[0]}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-4 max-w-3xl space-y-2 text-sm leading-6 text-ink-muted">
+          <p>{t('finance-ytd-note')}</p>
+          <p className="flex flex-col gap-1">
+            <SourceLink href={cy.source.url}>{cy.source.label}</SourceLink>
+            <SourceLink href={cy.budget.source.url}>{cy.budget.source.label}</SourceLink>
+          </p>
+        </div>
+      </Band>
+
+      <Band
+        id="special-funds"
+        eyebrow={t('finance-funds-eyebrow')}
+        title={t('finance-funds-title')}
+        lede={t('finance-funds-lede')}
+      >
+        <div className="mt-6 grid gap-5 lg:grid-cols-2">
+          <article className={`${CARD} p-5`}>
+            <h3 className="text-lg font-bold text-heading">{t('finance-funds-df-title')}</h3>
+            <p className="mt-1 text-sm leading-6 text-ink-muted">{t('finance-funds-df-desc')}</p>
+            <dl className="my-4 space-y-3 text-sm">
+              {[
+                [t('finance-funds-appropriated'), peso(sf.developmentFund.appropriation)],
+                [
+                  t('finance-funds-obligated', { period: sf.developmentFund.period }),
+                  `${peso(sf.developmentFund.obligated)} (${pctOf(sf.developmentFund.obligated, sf.developmentFund.appropriation)}%)`,
+                ],
+                [t('finance-funds-df-loan'), peso(sf.developmentFund.loanAmortization.obligated)],
+                [
+                  t('finance-funds-df-projects'),
+                  t('finance-funds-df-projects-value', {
+                    none: sf.developmentFund.projectsWithoutObligation,
+                    total: sf.developmentFund.projects,
+                  }),
+                ],
+              ].map(([label, value]) => (
+                <div
+                  key={label}
+                  className="flex flex-wrap justify-between gap-2 border-b border-line pb-2"
+                >
+                  <dt className="text-ink-muted">{label}</dt>
+                  <dd className="font-semibold text-heading tabular-nums">{value}</dd>
+                </div>
+              ))}
+            </dl>
+            <p className="text-xs leading-5 text-ink-muted">{t('finance-funds-df-note')}</p>
+            <p className="mt-3 text-sm">
+              <SourceLink href={sf.developmentFund.source.url}>
+                {sf.developmentFund.source.label}
+              </SourceLink>
+            </p>
+          </article>
+
+          <article className={`${CARD} p-5`}>
+            <h3 className="text-lg font-bold text-heading">{t('finance-funds-drr-title')}</h3>
+            <p className="mt-1 text-sm leading-6 text-ink-muted">{t('finance-funds-drr-desc')}</p>
+            <div className="my-4 grid gap-4">
+              <Meter
+                label={t('finance-funds-drr-total')}
+                value={t('finance-funds-spent-of', {
+                  actual: peso(sf.ldrrmf.spent),
+                  target: peso(sf.ldrrmf.appropriation),
+                })}
+                pct={pctOf(sf.ldrrmf.spent, sf.ldrrmf.appropriation)}
+                color={CHART_COLORS[1]}
+              />
+              <Meter
+                label={t('finance-funds-drr-mitigation')}
+                value={t('finance-funds-spent-of', {
+                  actual: peso(sf.ldrrmf.mitigation.spent),
+                  target: peso(sf.ldrrmf.mitigation.appropriation),
+                })}
+                pct={pctOf(sf.ldrrmf.mitigation.spent, sf.ldrrmf.mitigation.appropriation)}
+                color={CHART_COLORS[1]}
+              />
+              <Meter
+                label={t('finance-funds-drr-qrf')}
+                value={t('finance-funds-spent-of', {
+                  actual: peso(sf.ldrrmf.quickResponse.spent),
+                  target: peso(sf.ldrrmf.quickResponse.appropriation),
+                })}
+                pct={pctOf(sf.ldrrmf.quickResponse.spent, sf.ldrrmf.quickResponse.appropriation)}
+                color={CHART_COLORS[1]}
+              />
+            </div>
+            <p className="text-xs leading-5 text-ink-muted">{t('finance-funds-drr-note')}</p>
+            <p className="mt-3 text-sm">
+              <SourceLink href={sf.ldrrmf.source.url}>{sf.ldrrmf.source.label}</SourceLink>
+            </p>
+          </article>
+        </div>
       </Band>
 
       <Band
@@ -442,7 +701,7 @@ export default function Finance() {
                   <td className="px-4 py-3 whitespace-nowrap text-ink-soft">{r.kind}</td>
                   <td className="min-w-72 px-4 py-3">
                     <a
-                      href={`${r.url}#page=3`}
+                      href={r.href}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-start gap-1 text-royal hover:underline"
@@ -452,7 +711,7 @@ export default function Finance() {
                     </a>
                   </td>
                   <td className="px-4 py-3 whitespace-nowrap text-ink-soft tabular-nums">
-                    {r.pages[0]}–{r.pages[1]}
+                    {r.pages ? `${r.pages[0]}–${r.pages[1]}` : '—'}
                   </td>
                   <td className="px-4 py-3 whitespace-nowrap text-ink-soft tabular-nums">
                     {r.checkedOn}

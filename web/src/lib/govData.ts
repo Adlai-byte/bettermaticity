@@ -16,8 +16,6 @@ export interface Official {
   phone?: string;
   tel?: string;
   hours?: string;
-  /** The official's page on the City's website. */
-  profileUrl?: string;
 }
 
 export interface OfficialsData {
@@ -27,7 +25,7 @@ export interface OfficialsData {
   _status?: string;
   _checkedOn?: string;
   _note?: string;
-  _sources?: { title: string; url: string }[];
+  _sources?: { title: string; url: string; originalUrl?: string }[];
 }
 
 export interface LegislativeRecord {

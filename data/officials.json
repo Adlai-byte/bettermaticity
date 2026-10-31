@@ -1,26 +1,26 @@
 {
   "_status": "verified",
   "_checkedOn": "2026-11-01",
-  "_note": "Names and order transcribed from the City Government of Mati's own website (8th Sangguniang Panlungsod, 2025–2028 term). Councilors are listed in the order the City's Sangguniang Panlungsod page uses; the City prints them in capitals. Photos and office contacts are not published there, so none are recorded.",
+  "_note": "Names and order transcribed from the City Government of Mati's own website (8th Sangguniang Panlungsod, 2025–2028 term), checked live on 2026-11-01 and against the Internet Archive copies cited in _sources. The live site currently loads an unrelated outside script, so the archived copies (8 May 2026, same names) are cited instead. Councilors are listed in the order the City's Sangguniang Panlungsod page uses; the City prints them in capitals. Photos and office contacts are not published there, so none are recorded.",
   "_sources": [
     {
-      "title": "Sangguniang Panglungsod — City Government of Mati",
-      "url": "https://mati.gov.ph/sangguniang-panglungsod/"
+      "title": "Sangguniang Panglungsod — City Government of Mati (archived 8 May 2026)",
+      "url": "https://web.archive.org/web/20260508085431/https://mati.gov.ph/sangguniang-panglungsod/",
+      "originalUrl": "https://mati.gov.ph/sangguniang-panglungsod/"
     },
     {
-      "title": "City of Mati Mayor — City Government of Mati",
-      "url": "https://mati.gov.ph/city-of-mati-mayor/"
+      "title": "City of Mati Mayor — City Government of Mati (archived 8 May 2026)",
+      "url": "https://web.archive.org/web/20260508085458/https://mati.gov.ph/city-of-mati-mayor/",
+      "originalUrl": "https://mati.gov.ph/city-of-mati-mayor/"
     }
   ],
   "mayor": {
     "name": "Hon. Joel Mayo Z. Almario",
-    "title": "City Mayor",
-    "profileUrl": "https://mati.gov.ph/city-of-mati-mayor/"
+    "title": "City Mayor"
   },
   "vice_mayor": {
     "name": "Hon. Lorenzo Rabat",
-    "title": "City Vice Mayor",
-    "profileUrl": "https://mati.gov.ph/sangguniang-panglungsod/"
+    "title": "City Vice Mayor"
   },
   "councilors": [
     {

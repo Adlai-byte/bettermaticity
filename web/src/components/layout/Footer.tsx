@@ -37,7 +37,6 @@ const publicInfo: [string, string][] = [
   ['/government/links', 'links-title'],
   ['/transparency/documents', 'docs-page-name'],
   ['/transparency/sources', 'sources-page-name'],
-  ['https://mati.gov.ph/', 'footer-lgu-portal'],
 ];
 
 const legal: [string, string][] = [

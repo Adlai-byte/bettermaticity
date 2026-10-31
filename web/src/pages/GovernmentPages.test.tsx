@@ -25,7 +25,7 @@ import GovernmentOfficials from './GovernmentOfficials';
 import GovernmentOffices from './GovernmentOffices';
 import GovernmentBarangays from './GovernmentBarangays';
 import { officials } from '@/lib/govData';
-import { departments } from '@/lib/govDirectory';
+import { cityOfficeGroups, departments } from '@/lib/govDirectory';
 import { barangayCount } from '@/lib/statsData';
 afterEach(cleanup);
 
@@ -72,6 +72,11 @@ describe('city offices page', () => {
     expect(phones).toHaveLength(1);
     expect(phones[0].textContent).toMatch(/verified hotline/);
     expect(container.textContent).not.toMatch(PLACEHOLDER_CONTACT);
+
+    // The City's full list follows, grouped as the City groups them.
+    const all = document.getElementById('all-offices')!.closest('section')!;
+    expect(all.querySelectorAll('h3')).toHaveLength(cityOfficeGroups.length);
+    expect(within(all).getByText('City Information Office')).toBeTruthy();
 
     fireEvent.change(screen.getByRole('searchbox'), { target: { value: 'treasurer' } });
     expect(rows().length).toBeLessThan(departments.length);

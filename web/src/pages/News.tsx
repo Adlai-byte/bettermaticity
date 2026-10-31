@@ -134,11 +134,11 @@ export default function News() {
               title="LGU Mati Facebook"
               className="h-[500px] w-full"
               loading="lazy"
-              src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FOfficialLGUMati%2F&tabs=timeline&width=500&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
+              src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fmaticitylgu%2F&tabs=timeline&width=500&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
             />
           </div>
           <a
-            href="https://www.facebook.com/OfficialLGUMati/"
+            href="https://www.facebook.com/maticitylgu/"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-royal hover:underline"

@@ -4,6 +4,7 @@ import {
   fdpPortal,
   fdpRecords,
   officialDocuments,
+  recordQuarter,
   recordYear,
 } from './transparencyData';
 
@@ -39,18 +40,35 @@ describe('Full Disclosure archive', () => {
     expect(new Set(fdpRecords.map((r) => r.url)).size).toBe(fdpRecords.length);
     for (const r of fdpRecords) {
       expect(PORTAL_TYPES, r.title).toContain(r.type);
-      expect(r.url, r.title).toMatch(/^https:\/\/web\.archive\.org\/web\/\d{14}\/http/);
-      expect(r.url, r.title).toContain(r.originalUrl);
-      expect(r.archivedOn, r.title).toMatch(ISO);
       expect(r.checkedOn, r.title).toMatch(ISO);
-      expect(r.pages, r.title).toBeGreaterThan(0);
       expect(r.period.trim(), r.title).not.toBe('');
+      expect(r.title.trim(), r.url).not.toBe('');
+      if (r.source === 'archive') {
+        expect(r.url, r.title).toMatch(/^https:\/\/web\.archive\.org\/web\/\d{14}\/http/);
+        expect(r.url, r.title).toContain(r.originalUrl);
+        expect(r.archivedOn, r.title).toMatch(ISO);
+        expect(r.pages, r.title).toBeGreaterThan(0);
+      } else {
+        expect(r.source).toBe('dilg-fdp-portal');
+        expect(r.url).toBe(
+          `https://fdpp.dilg.gov.ph/fdpp/report/document-download?id=${r.portalId}`
+        );
+        expect(['available', 'unavailable']).toContain(r.status);
+        expect(recordYear(r.period), r.title).not.toBeNull();
+        expect(r.postingPeriod.trim(), r.title).not.toBe('');
+      }
     }
+    const portalIds = fdpRecords.flatMap((r) =>
+      r.source === 'dilg-fdp-portal' ? [r.portalId] : []
+    );
+    expect(new Set(portalIds).size).toBe(portalIds.length);
   });
 
   it('reads a year only when the period prints one', () => {
     expect(recordYear('Quarter ending March 2014')).toBe(2014);
     expect(recordYear('Not stated on the document')).toBeNull();
+    expect(recordQuarter('QUARTER 3 • CY 2026')).toBe(3);
+    expect(recordQuarter('CY 2026')).toBe(5);
   });
 });
 

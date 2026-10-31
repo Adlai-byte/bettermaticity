@@ -59,7 +59,7 @@ describe('Rising in Mati evidence and navigation', () => {
     expect(details.open).toBe(false);
     fireEvent.click(airport.getByText('Details and sources'));
     expect(details.open).toBe(true);
-    expect(airport.getByRole('link')).toHaveAttribute(
+    expect(airport.getAllByRole('link')[0]).toHaveAttribute(
       'href',
       expect.stringContaining('GAA2026/VolumeIB/DOTR/A.pdf#page=13')
     );

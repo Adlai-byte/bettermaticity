@@ -1,0 +1,200 @@
+{
+  "_status": "sourced",
+  "_note": "The City's own list of its departments and offices, with its grouping, transcribed from its Departments and Offices page. The live page (checked 2026-11-01) matches the Internet Archive copy cited here; the live site currently loads unrelated outside content, so the archived copy is cited. The page gives names only: no heads, phone numbers, emails or locations, and several of its descriptions are pasted from other offices, so none are copied. printedAs records two names fixed for an obvious typo (an unclosed bracket and a stray letter).",
+  "checkedOn": "2026-11-01",
+  "source": {
+    "title": "Departments and Offices — City Government of Mati (archived 8 May 2026)",
+    "url": "https://web.archive.org/web/20260508084318/https://mati.gov.ph/department-and-offices/",
+    "originalUrl": "https://mati.gov.ph/department-and-offices/"
+  },
+  "groups": [
+    {
+      "name": "Executive and Administrative Services",
+      "offices": [
+        {
+          "name": "Office of the City Mayor"
+        },
+        {
+          "name": "City General Services Office"
+        },
+        {
+          "name": "City Administrator’s Office"
+        },
+        {
+          "name": "City Legal Office"
+        },
+        {
+          "name": "City Human Resource Management and Development Office"
+        }
+      ]
+    },
+    {
+      "name": "Finance and Revenue Management",
+      "offices": [
+        {
+          "name": "City Accounting Office"
+        },
+        {
+          "name": "City Treasurer’s Office"
+        },
+        {
+          "name": "City Budget Office"
+        },
+        {
+          "name": "City Assessor’s Office"
+        }
+      ]
+    },
+    {
+      "name": "Economic Development and Business Services",
+      "offices": [
+        {
+          "name": "Public Employment Service Office (PESO-Mati)"
+        },
+        {
+          "name": "City Economic Enterprise Office"
+        },
+        {
+          "name": "City Cooperative Development Office"
+        },
+        {
+          "name": "Business Permit and Licensing Office (BPLO)"
+        },
+        {
+          "name": "Local Economic Development and Investment Promotion Office (LEDIPO)"
+        }
+      ]
+    },
+    {
+      "name": "Social Services and Community Welfare",
+      "offices": [
+        {
+          "name": "Office of Senior Citizens Affairs"
+        },
+        {
+          "name": "City Health Office"
+        },
+        {
+          "name": "City Housing and Resettlement Office"
+        },
+        {
+          "name": "Persons with Disabilities Affairs Office (PDAO)"
+        },
+        {
+          "name": "City Anti-Drug Abuse Council (CADAC)"
+        },
+        {
+          "name": "City Social Welfare and Development Office (CSWDO)"
+        }
+      ]
+    },
+    {
+      "name": "Sectoral and Cultural Affairs",
+      "offices": [
+        {
+          "name": "Office of the City Tribal Affairs Office"
+        },
+        {
+          "name": "City Muslim Community Affairs and Development Office",
+          "printedAs": "City Muslim Community Affairs and Development Office E"
+        }
+      ]
+    },
+    {
+      "name": "Agriculture, Fisheries, and Veterinary Services",
+      "offices": [
+        {
+          "name": "City Agriculture Office"
+        },
+        {
+          "name": "Office of the City Veterinarian"
+        }
+      ]
+    },
+    {
+      "name": "Infrastructure, Planning, and Environmental Management",
+      "offices": [
+        {
+          "name": "Office of the Building Official"
+        },
+        {
+          "name": "Office of the City Planning and Development Coordinator (CPDC)",
+          "printedAs": "Office of the City Planning and Development Coordinator (CPDC"
+        },
+        {
+          "name": "City Engineer’s Office"
+        },
+        {
+          "name": "City Environment and Natural Resources Office (CENRO)"
+        }
+      ]
+    },
+    {
+      "name": "Public Safety, Security, and Disaster Management",
+      "offices": [
+        {
+          "name": "Office of the City Civil Security Unit"
+        },
+        {
+          "name": "City Traffic Management Office (CTMO)"
+        },
+        {
+          "name": "City Disaster Risk Reduction and Management Office (CDRRMO)"
+        },
+        {
+          "name": "Public Safety and Security Office"
+        }
+      ]
+    },
+    {
+      "name": "Regulatory and Civil Services",
+      "offices": [
+        {
+          "name": "Office of the City Civil Registrar"
+        },
+        {
+          "name": "Tricycle Franchising and Regulation Division Office"
+        }
+      ]
+    },
+    {
+      "name": "Information and Digital Services",
+      "offices": [
+        {
+          "name": "City Information and Communication Technology Office"
+        },
+        {
+          "name": "City Information Office"
+        }
+      ]
+    },
+    {
+      "name": "Tourism, Sports, and Culture",
+      "offices": [
+        {
+          "name": "City Sports Development Office"
+        },
+        {
+          "name": "City Tourism and Promotions Office"
+        }
+      ]
+    },
+    {
+      "name": "Public Facilities and Economic Operations",
+      "offices": [
+        {
+          "name": "Mati Public Market"
+        },
+        {
+          "name": "Mati Centennial Transport Terminal Complex Office"
+        },
+        {
+          "name": "City of Mati Eternal Garden"
+        },
+        {
+          "name": "Mati Slaughterhouse Operation"
+        }
+      ]
+    }
+  ]
+}

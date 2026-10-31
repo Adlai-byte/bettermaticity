@@ -1,4 +1,5 @@
 import type { LucideIcon } from 'lucide-react';
+import cityOfficesJson from '@data/city-offices.json';
 import { hotlineById, primaryNumber } from '@/lib/hotlines';
 import {
   FileText,
@@ -18,8 +19,9 @@ import {
   Briefcase,
 } from 'lucide-react';
 
-// City offices + Sangguniang Panlungsod roster, mirroring the legacy
-// government/index.html. Placeholder names/committees pending verified records.
+// City offices that have a service guide on this site. Names follow the City's own
+// Departments and Offices list (data/city-offices.json); descriptions are ours. The
+// phone numbers and emails below are template values: only verifiedPhone ones are shown.
 
 export interface GovDepartment {
   Icon: LucideIcon;
@@ -75,7 +77,7 @@ export const departments: GovDepartment[] = [
   },
   {
     Icon: Users,
-    title: 'CSWDO',
+    title: 'City Social Welfare and Development Office (CSWDO)',
     descKey: 'gov-social-services-pwd-senior-citizen-ids-financial',
     phone: '(087) 326-5014',
     tel: '0873265014',
@@ -165,7 +167,7 @@ export const departments: GovDepartment[] = [
   },
   {
     Icon: TriangleAlert,
-    title: 'CDRRMO',
+    title: 'City Disaster Risk Reduction and Management Office (CDRRMO)',
     descKey: 'gov-disaster-preparedness-emergency-response-risk',
     phone: cdrrmo.display,
     tel: cdrrmo.tel,
@@ -191,7 +193,7 @@ export const departments: GovDepartment[] = [
   },
   {
     Icon: Briefcase,
-    title: 'PESO',
+    title: 'Public Employment Service Office (PESO-Mati)',
     descKey: 'gov-job-placement-employment-assistance-career',
     phone: '0917-155-1043',
     tel: '09171551043',
@@ -199,3 +201,15 @@ export const departments: GovDepartment[] = [
     jobUrl: 'https://www.facebook.com/profile.php?id=61564916854423',
   },
 ];
+
+// The City's own list of its departments and offices, grouped as the City groups them.
+// Names only: the City publishes no heads or contacts for them.
+export interface CityOfficeGroup {
+  name: string;
+  offices: { name: string; printedAs?: string }[];
+}
+
+export const cityOfficeGroups: CityOfficeGroup[] = cityOfficesJson.groups;
+export const cityOfficesSource = cityOfficesJson.source;
+export const cityOfficesCheckedOn = cityOfficesJson.checkedOn;
+export const cityOfficeCount = cityOfficeGroups.reduce((n, g) => n + g.offices.length, 0);

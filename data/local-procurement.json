@@ -1,6 +1,6 @@
 {
   "_note": "City Government of Mati procurement notices. Each was read from its official notice page: noticeTitle is the title as printed, name a plain-English rendering. ABC is the bidding ceiling; for a sale of City property (sale: true) it is the minimum bid. noticeStatus is the status shown on checkedOn and is not updated automatically. Unknown fields (contractor, award, funding) stay null.",
-  "checkedOn": "2026-10-29",
+  "checkedOn": "2026-11-01",
   "projects": [
     {
       "id": "CM-NP-SS-2026-001",
@@ -50,7 +50,32 @@
       "completionPercent": null,
       "sourceName": "PhilGEPS",
       "sourceUrl": "https://notices.philgeps.gov.ph/GEPSNONPILOT/Tender/PrintableBidNoticeAbstractUI.aspx?refid=11374254",
-      "checkedOn": "2026-10-29"
+      "checkedOn": "2026-11-01"
+    },
+    {
+      "id": "ITB No. 2026 – 34",
+      "reference": "13320160",
+      "scope": "local",
+      "name": "Rabies vaccine, rabies immunoglobulin and tetanus toxoid for the Animal Bite Treatment Center",
+      "noticeTitle": "Procurement of Rabies Vaccine (Animal Bite Treatment Center)",
+      "location": "City of Mati, Davao Oriental",
+      "agency": "City Government of Mati",
+      "funding": "Office of the City Mayor's Fund",
+      "mode": "Public Bidding",
+      "classification": "Goods",
+      "category": "Medical Supplies and Laboratory Instrument",
+      "sale": false,
+      "abc": 1998850,
+      "noticeStatus": "Active",
+      "publishedOn": "2026-10-31",
+      "updatedOn": null,
+      "closingOn": "2026-11-24",
+      "contractor": null,
+      "awardAmount": null,
+      "completionPercent": null,
+      "sourceName": "PhilGEPS",
+      "sourceUrl": "https://notices.philgeps.gov.ph/GEPSNONPILOT/Tender/PrintableBidNoticeAbstractUI.aspx?refid=13320160",
+      "checkedOn": "2026-11-01"
     },
     {
       "id": "ITB No. 2026 – 33",
@@ -75,7 +100,7 @@
       "completionPercent": null,
       "sourceName": "PhilGEPS",
       "sourceUrl": "https://notices.philgeps.gov.ph/GEPSNONPILOT/Tender/PrintableBidNoticeAbstractUI.aspx?refid=13306899",
-      "checkedOn": "2026-10-29"
+      "checkedOn": "2026-11-01"
     },
     {
       "id": "RFQ N0. 1811-2026",
@@ -100,7 +125,7 @@
       "completionPercent": null,
       "sourceName": "PhilGEPS",
       "sourceUrl": "https://notices.philgeps.gov.ph/GEPSNONPILOT/Tender/PrintableBidNoticeAbstractUI.aspx?refid=13306902",
-      "checkedOn": "2026-10-29"
+      "checkedOn": "2026-11-01"
     },
     {
       "id": "RFQ N0. 1796-2026",
@@ -125,7 +150,7 @@
       "completionPercent": null,
       "sourceName": "PhilGEPS",
       "sourceUrl": "https://notices.philgeps.gov.ph/GEPSNONPILOT/Tender/PrintableBidNoticeAbstractUI.aspx?refid=13306903",
-      "checkedOn": "2026-10-29"
+      "checkedOn": "2026-11-01"
     },
     {
       "id": "RFQ N0. 1795-2026",
@@ -150,7 +175,7 @@
       "completionPercent": null,
       "sourceName": "PhilGEPS",
       "sourceUrl": "https://notices.philgeps.gov.ph/GEPSNONPILOT/Tender/PrintableBidNoticeAbstractUI.aspx?refid=13306905",
-      "checkedOn": "2026-10-29"
+      "checkedOn": "2026-11-01"
     },
     {
       "id": "ITB-AUCTION-2026-06",
@@ -175,7 +200,7 @@
       "completionPercent": null,
       "sourceName": "PhilGEPS",
       "sourceUrl": "https://notices.philgeps.gov.ph/GEPSNONPILOT/Tender/PrintableBidNoticeAbstractUI.aspx?refid=13305708",
-      "checkedOn": "2026-10-29"
+      "checkedOn": "2026-11-01"
     },
     {
       "id": "ITB No. 2026 – 30",
@@ -200,7 +225,7 @@
       "completionPercent": null,
       "sourceName": "PhilGEPS",
       "sourceUrl": "https://notices.philgeps.gov.ph/GEPSNONPILOT/Tender/PrintableBidNoticeAbstractUI.aspx?refid=13305977",
-      "checkedOn": "2026-10-29"
+      "checkedOn": "2026-11-01"
     },
     {
       "id": "ITB No. 2026 – 31",
@@ -225,7 +250,7 @@
       "completionPercent": null,
       "sourceName": "PhilGEPS",
       "sourceUrl": "https://notices.philgeps.gov.ph/GEPSNONPILOT/Tender/PrintableBidNoticeAbstractUI.aspx?refid=13306085",
-      "checkedOn": "2026-10-29"
+      "checkedOn": "2026-11-01"
     },
     {
       "id": "ITB No. 2026 – 32",
@@ -250,7 +275,7 @@
       "completionPercent": null,
       "sourceName": "PhilGEPS",
       "sourceUrl": "https://notices.philgeps.gov.ph/GEPSNONPILOT/Tender/PrintableBidNoticeAbstractUI.aspx?refid=13306205",
-      "checkedOn": "2026-10-29"
+      "checkedOn": "2026-11-01"
     },
     {
       "id": "ITB No. 2026 – 29",
@@ -260,7 +285,7 @@
       "noticeTitle": "IMPROVEMENT OF IMPROVEMENT OF PASALUBONG, SOUVENIR, TOURISM INFORMATION CENTER AT SITIO TAGAWISAN, BARANGAY BADAS",
       "location": "Sitio Tagawisan, Barangay Badas, City of Mati, Davao Oriental",
       "agency": "City Government of Mati",
-      "funding": null,
+      "funding": "20% Local Development Fund",
       "mode": "Public Bidding",
       "classification": "Civil Works",
       "category": "Construction Projects",
@@ -275,7 +300,7 @@
       "completionPercent": null,
       "sourceName": "PhilGEPS",
       "sourceUrl": "https://notices.philgeps.gov.ph/GEPSNONPILOT/Tender/PrintableBidNoticeAbstractUI.aspx?refid=13293157",
-      "checkedOn": "2026-10-29"
+      "checkedOn": "2026-11-01"
     },
     {
       "id": "ITB No. 2026 – 27",
@@ -300,7 +325,7 @@
       "completionPercent": null,
       "sourceName": "PhilGEPS",
       "sourceUrl": "https://notices.philgeps.gov.ph/GEPSNONPILOT/Tender/PrintableBidNoticeAbstractUI.aspx?refid=13288404",
-      "checkedOn": "2026-10-29"
+      "checkedOn": "2026-11-01"
     },
     {
       "id": "ITB No. 2026 – 28",
@@ -310,7 +335,7 @@
       "noticeTitle": "Construction of 2-Storey 10-Classrooms at Mati National Comprehensive High School",
       "location": "City of Mati, Davao Oriental",
       "agency": "City Government of Mati",
-      "funding": null,
+      "funding": "DepEd Basic Education Facilities Program, GAA 2026",
       "mode": "Public Bidding",
       "classification": "Civil Works",
       "category": "Construction Projects",
@@ -325,7 +350,7 @@
       "completionPercent": null,
       "sourceName": "PhilGEPS",
       "sourceUrl": "https://notices.philgeps.gov.ph/GEPSNONPILOT/Tender/PrintableBidNoticeAbstractUI.aspx?refid=13288972",
-      "checkedOn": "2026-10-29"
+      "checkedOn": "2026-11-01"
     },
     {
       "id": "ITB No. 2026 – 26",
@@ -335,7 +360,7 @@
       "noticeTitle": "DESIGN AND BUILD: CONSTRUCTION OF SANITARY LANDFILL CELL 2 AND REHABILITATION OF THE WASTE WATER TREATMENT FACILITY",
       "location": "City of Mati, Davao Oriental",
       "agency": "City Government of Mati",
-      "funding": null,
+      "funding": "Special Purpose Appropriation – 20% Local Development Fund",
       "mode": "Public Bidding",
       "classification": "Civil Works",
       "category": "Construction Projects",
@@ -350,7 +375,7 @@
       "completionPercent": null,
       "sourceName": "PhilGEPS",
       "sourceUrl": "https://notices.philgeps.gov.ph/GEPSNONPILOT/Tender/PrintableBidNoticeAbstractUI.aspx?refid=13280306",
-      "checkedOn": "2026-10-29"
+      "checkedOn": "2026-11-01"
     }
   ]
 }

@@ -4,7 +4,12 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import en from '@/locales/en.json';
 import { isMigratedRoute } from '@/lib/migratedRoutes';
 import { fiscalYears } from '@/lib/budgetData';
-import { fdpRecords, officialDocuments } from '@/lib/transparencyData';
+import {
+  fdpRecords,
+  officialDocuments,
+  recordYear,
+  type FdpPortalRecord,
+} from '@/lib/transparencyData';
 import { procurementNotices } from '@/lib/infrastructureData';
 import { risingProjects } from '@/lib/risingProjects';
 
@@ -64,14 +69,39 @@ describe('city finances', () => {
 });
 
 describe('Full Disclosure archive', () => {
-  it('lists every record and narrows with search', () => {
+  const rows = (c: HTMLElement) => c.querySelectorAll('#fdp-results li');
+
+  it('pages through every record and narrows with filters and search', () => {
     const { container } = renderAt(<FullDisclosure />);
-    const archive = () => container.querySelector('#archive')!;
-    expect(archive().querySelectorAll('li')).toHaveLength(fdpRecords.length);
-    fireEvent.change(screen.getByRole('searchbox'), { target: { value: 'cash flow' } });
-    const shown = archive().querySelectorAll('li').length;
-    expect(shown).toBeGreaterThan(0);
-    expect(shown).toBeLessThan(fdpRecords.length);
+    expect(rows(container)).toHaveLength(Math.min(20, fdpRecords.length));
+    expect(container.textContent).toContain(`of ${fdpRecords.length}`);
+
+    fireEvent.change(screen.getByLabelText(en['fdp-filter-year']), { target: { value: '2013' } });
+    const in2013 = fdpRecords.filter((r) => recordYear(r.period) === 2013).length;
+    expect(rows(container)).toHaveLength(Math.min(20, in2013));
+
+    fireEvent.change(screen.getByLabelText(en['fdp-filter-year']), { target: { value: '' } });
+    fireEvent.change(screen.getByLabelText(en['fdp-filter-type']), {
+      target: { value: 'Statement of Receipts and Expenditures' },
+    });
+    const sre = fdpRecords.filter((r) => r.type === 'Statement of Receipts and Expenditures');
+    expect(rows(container)).toHaveLength(Math.min(20, sre.length));
+
+    fireEvent.change(screen.getByRole('searchbox'), { target: { value: 'quarter 3, cy 2026' } });
+    expect(rows(container)).toHaveLength(1);
+  });
+
+  it('links portal files only when the portal served them', () => {
+    const { container } = renderAt(<FullDisclosure />);
+    fireEvent.change(screen.getByLabelText(en['fdp-filter-year']), { target: { value: '2026' } });
+    const portal = fdpRecords.filter(
+      (r): r is FdpPortalRecord => r.source === 'dilg-fdp-portal' && recordYear(r.period) === 2026
+    );
+    for (const r of portal.slice(0, 20)) {
+      const link = container.querySelector(`a[href="${r.url}"]`);
+      if (r.status === 'available') expect(link, r.title).not.toBeNull();
+      else expect(link, r.title).toBeNull();
+    }
   });
 });
 

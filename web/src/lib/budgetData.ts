@@ -10,6 +10,19 @@ export const financialOutlook = fiscal.outlook;
 /** Reported years, oldest first. Each carries its own source edition. */
 export const fiscalYears = [...fiscal.fiscal_years].sort((a, b) => a.year - b.year);
 
+/** The current year to date (BLGF quarterly SRE) against the City's own 2026 budget.
+ *  Kept out of fiscalYears so a part-year never sits beside full years. */
+export const currentYear = fiscal.currentYear;
+
+/** The 20% Development Fund and the disaster risk reduction fund, from the City's
+ *  Full Disclosure posting and BLGF. */
+export const specialFunds = fiscal.specialFunds;
+
+/** Share of a total as a whole percentage (0 when the total is 0). */
+export function pctOf(part: number, total: number): number {
+  return total ? Math.round((part / total) * 100) : 0;
+}
+
 /** PHP millions, preserving the source's two-decimal precision. */
 export function peso(millions: number): string {
   return `₱${millions.toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}M`;

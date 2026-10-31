@@ -169,16 +169,6 @@ export const GROUPS: IndexGroup[] = [
       { to: '/changelog', key: 'changelog-title', desc: 'sitemap-item-changelog-desc' },
       { to: '/search', key: 'search-title', desc: 'search-lede' },
       { to: '/sitemap', key: 'footer-sitemap', desc: 'sitemap-lede' },
-      {
-        to: 'https://mati.gov.ph/',
-        key: 'footer-lgu-portal',
-        desc: 'sitemap-item-lgu-portal-desc',
-      },
-      {
-        to: 'https://mati.gov.ph/sangguniang-panglungsod/',
-        key: 'sitemap-sangguniang-bayan',
-        desc: 'sitemap-item-sp-desc',
-      },
     ],
   },
 ];

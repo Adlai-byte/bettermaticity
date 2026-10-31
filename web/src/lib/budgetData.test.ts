@@ -1,5 +1,12 @@
 import { describe, expect, it } from 'vitest';
-import { annualFinancials as q, fiscalSource, financialOutlook, fiscalYears } from './budgetData';
+import {
+  annualFinancials as q,
+  currentYear as cy,
+  fiscalSource,
+  financialOutlook,
+  fiscalYears,
+  specialFunds,
+} from './budgetData';
 import { procurementNotices } from './infrastructureData';
 import en from '../locales/en.json';
 import ceb from '../locales/ceb.json';
@@ -67,6 +74,56 @@ describe('transparency data integrity', () => {
       expect(record.nta).toBeLessThan(record.receipts);
       expect(record.source.url).toContain('/BESF2027/');
     }
+  });
+
+  it('reconciles the current year to date and keeps it out of the reported years', () => {
+    expect(cy.status).toBe('year-to-date');
+    expect(fiscalYears.map((y) => y.year)).not.toContain(cy.year);
+    const r = cy.receipts;
+    expect(Math.abs(r.local + r.external + r.nonIncome - r.total)).toBeLessThanOrEqual(0.011);
+    expect(r.nta).toBeLessThanOrEqual(r.external);
+    const { total, ...categories } = cy.expenditures;
+    const spent = Object.values(categories).reduce<number>((sum, a) => sum + a, 0);
+    expect(Math.abs(spent - total)).toBeLessThanOrEqual(0.011);
+    expect(
+      Math.abs(cy.beginningCashBalance + r.total - total - cy.fundCashAvailable)
+    ).toBeLessThanOrEqual(0.011);
+    expect(
+      Math.abs(
+        cy.fundCashAvailable -
+          cy.priorYearPayables -
+          cy.continuingAppropriation -
+          cy.endingCashBalance
+      )
+    ).toBeLessThanOrEqual(0.011);
+    // A part-year never exceeds the City's own full-year allocation.
+    expect(r.nta).toBeLessThan(cy.budget.ntaAllocation);
+    expect(cy.budget.ntaAllocation).toBe(financialOutlook.find((o) => o.year === cy.year)!.nta);
+  });
+
+  it('gives every new finance figure an official source and check date', () => {
+    const sources = [
+      cy.source,
+      cy.budget.source,
+      specialFunds.developmentFund.source,
+      specialFunds.ldrrmf.source,
+      q.crossCheck!,
+    ];
+    for (const s of sources) {
+      expect(['blgf.gov.ph', 'fdpp.dilg.gov.ph']).toContain(new URL(s.url).hostname);
+      expect(s.checkedOn).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    }
+    const df = specialFunds.developmentFund;
+    expect(df.obligated).toBeLessThanOrEqual(df.appropriation);
+    expect(df.loanAmortization.obligated).toBeLessThanOrEqual(df.obligated);
+    expect(df.projectsWithoutObligation).toBeLessThanOrEqual(df.projects);
+    const drr = specialFunds.ldrrmf;
+    expect(
+      Math.abs(drr.mitigation.appropriation + drr.quickResponse.appropriation - drr.appropriation)
+    ).toBeLessThanOrEqual(0.011);
+    expect(
+      Math.abs(drr.mitigation.spent + drr.quickResponse.spent - drr.spent)
+    ).toBeLessThanOrEqual(0.011);
   });
 
   it('keeps procurement ceilings separate from unknown awards and completion', () => {

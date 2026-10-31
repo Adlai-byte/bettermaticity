@@ -51,7 +51,18 @@
       "fundCashAvailable": 709.31,
       "priorYearPayables": 147.81,
       "continuingAppropriation": 264.96,
-      "endingCashBalance": 296.54
+      "endingCashBalance": 296.54,
+      "crossCheck": {
+        "publisher": "Bureau of Local Government Finance (BLGF)",
+        "title": "Statement of Receipts and Expenditures by LGU, FY2025 (Preliminary)",
+        "url": "https://blgf.gov.ph/wp-content/uploads/2026/05/By-LGU-SRE-2025.xlsx",
+        "sheet": "SRE",
+        "row": 227,
+        "publishedOn": "2026-05-12",
+        "checkedOn": "2026-11-01",
+        "label": "BLGF · SRE by LGU, FY2025 · sheet SRE, row 227",
+        "note": "Every FY2025 amount above matches this BLGF workbook once rounded to PHP millions. BLGF counts education (Special Education Fund) inside social services; this page shows it separately."
+      }
     },
     {
       "year": 2024,
@@ -224,5 +235,110 @@
       }
     }
   ],
-  "outlookBasis": "Planning classification is an editorial inference from the August 2026 publication date and unfinished/future fiscal years. F.14/F.15 reuse actual-data footnotes; they do not establish completed-year actuals or an enacted city appropriation."
+  "outlookBasis": "Planning classification is an editorial inference from the August 2026 publication date and unfinished/future fiscal years. F.14/F.15 reuse actual-data footnotes; they do not establish completed-year actuals or an enacted city appropriation.",
+  "currentYear": {
+    "year": 2026,
+    "period": "January–September 2026",
+    "asOf": "2026-09-30",
+    "status": "year-to-date",
+    "source": {
+      "publisher": "Bureau of Local Government Finance (BLGF)",
+      "title": "Statement of Receipts and Expenditures by LGU, FY2026 Q3 (cumulative, preliminary)",
+      "url": "https://blgf.gov.ph/wp-content/uploads/2026/10/By-LGU-SRE-2026-Q3-1.xlsx",
+      "sheet": "FY2026-3 SRE",
+      "row": 224,
+      "publishedOn": "2026-10-30",
+      "checkedOn": "2026-11-01",
+      "label": "BLGF · SRE by LGU, FY2026 Q3 · sheet FY2026-3 SRE, row 224",
+      "basis": "The City Treasurer's own quarterly report through BLGF's LIFT system, cumulative from 1 January. Preliminary and not audited. The City's Full Disclosure copy of the same report shows the same amounts, except PHP 0.04M of advance real property tax payments added to ending cash."
+    },
+    "beginningCashBalance": 296.71,
+    "receipts": {
+      "local": 237.16,
+      "external": 1587.43,
+      "nonIncome": 74.48,
+      "total": 1899.07,
+      "nta": 1518.57
+    },
+    "expenditures": {
+      "gps": 558.58,
+      "social": 90.34,
+      "economic": 49.59,
+      "sef": 16.15,
+      "debt": 86.74,
+      "nonOperating": 286.72,
+      "total": 1088.12
+    },
+    "fundCashAvailable": 1107.66,
+    "priorYearPayables": 95.2,
+    "continuingAppropriation": 109.29,
+    "endingCashBalance": 903.17,
+    "budget": {
+      "source": {
+        "publisher": "City Government of Mati (City Treasurer)",
+        "title": "Statement of Receipts and Expenditures, CY2026 Q3 — Income Target/Budget Appropriation column",
+        "url": "https://fdpp.dilg.gov.ph/fdpp/report/document-download?id=267921",
+        "portal": "DILG Full Disclosure Policy Portal",
+        "checkedOn": "2026-11-01",
+        "label": "City of Mati FDP posting · SRE CY2026 Q3 (portal id 267921)",
+        "note": "Certified by the Acting City Treasurer. The budget column gives the City's 2026 income targets and appropriations, including supplemental budgets."
+      },
+      "localSourcesTarget": 246.14,
+      "ntaAllocation": 2024.76,
+      "currentOperatingIncomeTarget": 2270.9,
+      "currentOperating": 1903.47,
+      "capitalOutlay": 306.77,
+      "debtPrincipal": 197.31,
+      "actualCapitalOutlay": 0.0,
+      "actualDebtPrincipal": 118.48
+    }
+  },
+  "specialFunds": {
+    "developmentFund": {
+      "year": 2026,
+      "period": "January–September 2026",
+      "appropriation": 482.15,
+      "obligated": 117.24,
+      "loanAmortization": {
+        "appropriation": 195.79,
+        "obligated": 100.02
+      },
+      "projects": 50,
+      "projectsWithoutObligation": 27,
+      "source": {
+        "publisher": "City Government of Mati (City Budget Office)",
+        "title": "Utilization of the 20% component of the National Tax Allotment, CY2026 Q3 (FDP Form 7)",
+        "url": "https://fdpp.dilg.gov.ph/fdpp/report/document-download?id=267681",
+        "portal": "DILG Full Disclosure Policy Portal",
+        "checkedOn": "2026-11-01",
+        "label": "City of Mati FDP posting · 20% Development Fund CY2026 Q3 (portal id 267681)"
+      },
+      "note": "Signed by the City Budget Officer and the City Mayor. Obligated is the form's own summary (economic PHP 107.38M + social PHP 9.87M). The form's project table totals PHP 127.11M because the social subtotal (PHP 9.87M) is also entered on the CCTV control-room line, which says no obligation was incurred."
+    },
+    "ldrrmf": {
+      "year": 2025,
+      "period": "FY2025",
+      "appropriation": 100.58,
+      "spent": 18.49,
+      "mitigation": {
+        "appropriation": 70.41,
+        "spent": 18.49
+      },
+      "quickResponse": {
+        "appropriation": 30.18,
+        "spent": 0.0
+      },
+      "source": {
+        "publisher": "Bureau of Local Government Finance (BLGF)",
+        "title": "Local Disaster Risk Reduction and Management Fund by LGU, FY2025 (Preliminary)",
+        "url": "https://blgf.gov.ph/wp-content/uploads/2026/06/FY2025-LDRRMF-by-LGU.xlsx",
+        "sheet": "FY2025",
+        "row": 222,
+        "publishedOn": "2026-06-09",
+        "checkedOn": "2026-11-01",
+        "label": "BLGF · LDRRMF by LGU, FY2025 · row 222"
+      },
+      "note": "The 70% part funds preparedness and mitigation; the 30% Quick Response Fund is for relief and recovery. BLGF shows nothing spent from it in FY2025."
+    }
+  }
 }

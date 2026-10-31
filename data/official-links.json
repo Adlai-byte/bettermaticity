@@ -1,56 +1,16 @@
 {
   "_note": "Official online destinations for the City of Mati, each opened on checkedOn. kind: website (a City Government site or page), service (an online service the City runs), social (an account the City's own website links to), national (a national-government portal that covers Mati). A link appears here only if it opened when checked.",
-  "checkedOn": "2026-10-29",
+  "checkedOn": "2026-11-01",
   "links": [
     {
       "id": "city-website",
       "kind": "website",
       "name": "City Government of Mati — official website",
       "owner": "City Government of Mati",
-      "purpose": "The City's own website: news, the Mayor's page, the Sangguniang Panlungsod and the list of departments.",
+      "purpose": "The City's own website: the Mayor's page, the Sangguniang Panlungsod and the list of departments.",
       "url": "https://mati.gov.ph/",
-      "note": null,
-      "checkedOn": "2026-10-29"
-    },
-    {
-      "id": "city-departments",
-      "kind": "website",
-      "name": "Departments and offices",
-      "owner": "City Government of Mati",
-      "purpose": "The City's list of its departments and offices.",
-      "url": "https://mati.gov.ph/department-and-offices/",
-      "note": null,
-      "checkedOn": "2026-10-29"
-    },
-    {
-      "id": "city-mayor",
-      "kind": "website",
-      "name": "Office of the City Mayor",
-      "owner": "City Government of Mati",
-      "purpose": "The Mayor's page on the City website.",
-      "url": "https://mati.gov.ph/city-of-mati-mayor/",
-      "note": null,
-      "checkedOn": "2026-10-29"
-    },
-    {
-      "id": "city-council",
-      "kind": "website",
-      "name": "Sangguniang Panlungsod",
-      "owner": "Sangguniang Panlungsod ng Mati",
-      "purpose": "The City Council's page on the City website.",
-      "url": "https://mati.gov.ph/sangguniang-panglungsod/",
-      "note": "The council has no separate website: sangguniangbayan.mati.gov.ph, linked by earlier versions of this site, does not exist.",
-      "checkedOn": "2026-10-29"
-    },
-    {
-      "id": "city-news",
-      "kind": "website",
-      "name": "City news",
-      "owner": "City Government of Mati",
-      "purpose": "News and announcements posted on the City website.",
-      "url": "https://mati.gov.ph/news/",
-      "note": null,
-      "checkedOn": "2026-10-29"
+      "note": "Parts of the site currently show unrelated posts and load an outside script. Until the City fixes it, use only the Mayor, council and departments pages, and treat other content on the site with care.",
+      "checkedOn": "2026-11-01"
     },
     {
       "id": "trabawho",

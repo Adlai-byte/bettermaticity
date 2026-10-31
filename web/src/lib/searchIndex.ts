@@ -4,7 +4,7 @@
 import Fuse from 'fuse.js';
 import { GROUPS, PRIMARY, type IndexLink } from '@/lib/siteIndex';
 import { services } from '@/lib/services';
-import { departments } from '@/lib/govDirectory';
+import { cityOfficeGroups, departments } from '@/lib/govDirectory';
 import { officials, officialsAreDraft, ordinances, resolutions } from '@/lib/govData';
 import { risingProjects, projectAnchor } from '@/lib/risingProjects';
 import { noticeSearchText, procurementNotices } from '@/lib/infrastructureData';
@@ -79,6 +79,10 @@ export function buildSearchIndex(t: Translate): SearchRecord[] {
       to: '/legislative/resolution-framework',
     })),
   ];
+  const guideOffices = new Set(departments.map((d) => (d.titleKey ? t(d.titleKey) : d.title)));
+  const otherOffices = cityOfficeGroups.flatMap((g) =>
+    g.offices.filter((o) => !guideOffices.has(o.name)).map((o) => ({ ...o, group: g.name }))
+  );
   const people = officialsAreDraft
     ? []
     : [officials.mayor, officials.vice_mayor, ...(officials.councilors ?? [])].filter(
@@ -101,6 +105,13 @@ export function buildSearchIndex(t: Translate): SearchRecord[] {
       title: d.titleKey ? t(d.titleKey) : (d.title ?? ''),
       desc: t(d.descKey),
       to: d.to,
+    })),
+    ...otherOffices.map((o) => ({
+      id: `office:${o.name}`,
+      type: 'office' as const,
+      title: o.name,
+      desc: o.group,
+      to: '/government/offices#all-offices',
     })),
     ...people.map((o) => ({
       id: `official:${o.name}`,
@@ -139,11 +150,24 @@ export function buildSearchIndex(t: Translate): SearchRecord[] {
       desc: d.issuer,
       to: `/transparency/documents#${d.id}`,
     })),
-    ...fdpRecords.map((r) => ({
-      id: `fdp:${r.url}`,
+    // Archived files one by one; portal postings once per report type, so a search
+    // for "budget" doesn't return every quarterly filing.
+    ...fdpRecords
+      .filter((r) => r.source === 'archive')
+      .map((r) => ({
+        id: `fdp:${r.url}`,
+        type: 'document' as const,
+        title: r.title,
+        desc: `${r.type} · ${r.period}`,
+        to: '/transparency/full-disclosure#archive',
+      })),
+    ...[
+      ...new Set(fdpRecords.filter((r) => r.source === 'dilg-fdp-portal').map((r) => r.type)),
+    ].map((type) => ({
+      id: `fdp-type:${type}`,
       type: 'document' as const,
-      title: r.title,
-      desc: `${r.type} · ${r.period}`,
+      title: type,
+      desc: t('search-fdp-desc'),
       to: '/transparency/full-disclosure#archive',
     })),
     ...officialLinks.map((l) => ({

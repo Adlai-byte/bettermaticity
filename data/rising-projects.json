@@ -1,5 +1,5 @@
 {
-  "checkedOn": "2026-09-24",
+  "checkedOn": "2026-11-01",
   "projects": [
     {
       "id": "mati-airport",
@@ -13,8 +13,12 @@
       "detailKey": "rising-airport-detail",
       "sources": [
         {
-          "label": "DBM \u00b7 GAA FY2026, p. 343",
+          "label": "DBM · GAA FY2026, p. 343",
           "url": "https://www.dbm.gov.ph/wp-content/uploads/GAA/GAA2026/VolumeIB/DOTR/A.pdf#page=13"
+        },
+        {
+          "label": "DBM · NEP FY2027, DOTr Office of the Secretary, p. 301 (no Mati Airport line)",
+          "url": "https://www.dbm.gov.ph/wp-content/uploads/NEP2027/DOTr/A.pdf#page=14"
         }
       ]
     },
@@ -30,7 +34,7 @@
       "detailKey": "rising-macambol-detail",
       "sources": [
         {
-          "label": "Philippine News Agency \u00b7 20 Jan 2026",
+          "label": "Philippine News Agency · 20 Jan 2026",
           "url": "https://www.pna.gov.ph/articles/1267356"
         }
       ]
@@ -47,7 +51,7 @@
       "detailKey": "rising-fishport-detail",
       "sources": [
         {
-          "label": "Philippine News Agency \u00b7 4 Feb 2023",
+          "label": "Philippine News Agency · 4 Feb 2023",
           "url": "https://www.pna.gov.ph/articles/1194397"
         }
       ]
@@ -64,8 +68,25 @@
       "detailKey": "rising-coastal-detail",
       "sources": [
         {
-          "label": "Philippine News Agency \u00b7 4 Feb 2023",
+          "label": "Philippine News Agency · 4 Feb 2023",
           "url": "https://www.pna.gov.ph/articles/1194397"
+        }
+      ]
+    },
+    {
+      "id": "matiao-coastal-road",
+      "category": "road",
+      "titleKey": "rising-matiao-road",
+      "scope": "national",
+      "status": "announced",
+      "sourceDate": "2026-08-13",
+      "amount": 100000000,
+      "amountKind": "proposed",
+      "detailKey": "rising-matiao-road-detail",
+      "sources": [
+        {
+          "label": "DBM · NEP FY2027, Volume II-B, Details of DPWH programs/projects, p. 284 (Region XI)",
+          "url": "https://www.dbm.gov.ph/wp-content/uploads/NEP2027/DPWH/Details-of-DPWH.pdf#page=174"
         }
       ]
     }
