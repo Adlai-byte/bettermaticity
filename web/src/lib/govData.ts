@@ -16,6 +16,8 @@ export interface Official {
   phone?: string;
   tel?: string;
   hours?: string;
+  /** The official's page on the City's website. */
+  profileUrl?: string;
 }
 
 export interface OfficialsData {

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { UserRound } from 'lucide-react';
+import { ArrowUpRight, UserRound } from 'lucide-react';
 import { Seo } from '@/components/Seo';
 import { AppLink } from '@/components/AppLink';
 import { DirectoryList } from '@/components/DirectoryList';
@@ -28,8 +28,8 @@ function Avatar({ name, large = false }: { name: string; large?: boolean }) {
 }
 
 // Elected officials in BetterSanFernando's directory style. Names and councilor order come
-// from mati.gov.ph; the City publishes no photos or office contacts for them, so every
-// contact slot defers to the office.
+// from mati.gov.ph; the City publishes no photos or office contacts for them, so the Mayor
+// and Vice Mayor link to their City pages and the contact directory instead.
 export default function GovernmentOfficials() {
   const { t } = useLanguage();
   // Client-only filter; starts empty so all councilors are in the prerendered HTML.
@@ -81,8 +81,20 @@ export default function GovernmentOfficials() {
                   </p>
                   <h3 className="mt-1 font-display text-xl font-bold text-heading">{o.name}</h3>
                   <p className="mt-3 text-sm text-ink-muted">
-                    <span className="text-feel-text">{t('service-confirm-office')}</span>
-                    {' · '}
+                    {o.profileUrl ? (
+                      <>
+                        <a
+                          href={o.profileUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-0.5 font-semibold text-royal hover:underline"
+                        >
+                          {t('gov-official-profile')}
+                          <ArrowUpRight className="size-3.5" aria-hidden="true" />
+                        </a>
+                        {' · '}
+                      </>
+                    ) : null}
                     <AppLink to="/contact" className="font-semibold text-royal hover:underline">
                       {t('service-contact-link')}
                     </AppLink>
@@ -118,9 +130,6 @@ export default function GovernmentOfficials() {
                   <h3 className="font-semibold text-heading">{c.name}</h3>
                   <p className="text-sm text-ink-muted">{c.title}</p>
                 </div>
-                <p className="hidden text-xs font-medium text-feel-text sm:block">
-                  {t('service-confirm-office')}
-                </p>
               </div>
             )}
           />
