@@ -1,74 +1,35 @@
 {
-  "_status": "draft",
-  "_note": "Names verified from the May 2025 Philippine local elections (term 2025–2028): mayor Joel Mayo Z. Almario, vice mayor Lorenzo \"Enzo\" Rabat, and the 10 elected Sangguniang Panlungsod members (by vote rank). Official photos and contact details (email/phone/tel/hours) are still PLACEHOLDERS pending verification. Councilor #1 \"Pang Jr.\" is the ballot-form name; full first name unconfirmed.",
+  "_status": "verified",
+  "_checkedOn": "2026-11-01",
+  "_note": "Names and order transcribed from the City Government of Mati's own website (8th Sangguniang Panlungsod, 2025–2028 term). Councilors are listed in the order the City's Sangguniang Panlungsod page uses; the City prints them in capitals. Photos and office contacts are not published there, so none are recorded.",
+  "_sources": [
+    {
+      "title": "Sangguniang Panglungsod — City Government of Mati",
+      "url": "https://mati.gov.ph/sangguniang-panglungsod/"
+    },
+    {
+      "title": "City of Mati Mayor — City Government of Mati",
+      "url": "https://mati.gov.ph/city-of-mati-mayor/"
+    }
+  ],
   "mayor": {
     "name": "Hon. Joel Mayo Z. Almario",
-    "title": "City Mayor",
-    "image": "assets/images/officials/mayor.jpg",
-    "email": "mayor@mati.gov.ph",
-    "phone": "(087) 326-5002",
-    "tel": "0873265002",
-    "hours": "Mon-Fri: 8:00 AM - 5:00 PM"
+    "title": "City Mayor"
   },
   "vice_mayor": {
-    "name": "Hon. Lorenzo \"Enzo\" Rabat",
-    "title": "City Vice Mayor",
-    "image": "assets/images/officials/vice-mayor.jpg",
-    "email": "vicemayor@mati.gov.ph",
-    "phone": "(087) 326-5003",
-    "tel": "0873265003",
-    "hours": "Mon-Fri: 8:00 AM - 5:00 PM"
+    "name": "Hon. Lorenzo Rabat",
+    "title": "City Vice Mayor"
   },
   "councilors": [
-    {
-      "name": "Hon. Pang Jr.",
-      "title": "City Councilor",
-      "image": "assets/images/officials/sb1.jpg"
-    },
-    {
-      "name": "Hon. Roger Pabio",
-      "title": "City Councilor",
-      "image": "assets/images/officials/sb2.jpg"
-    },
-    {
-      "name": "Hon. Xenna All Campos",
-      "title": "City Councilor",
-      "image": "assets/images/officials/sb3.jpg"
-    },
-    {
-      "name": "Hon. Tara Gayta",
-      "title": "City Councilor",
-      "image": "assets/images/officials/sb4.jpg"
-    },
-    {
-      "name": "Hon. Paolo Rabat",
-      "title": "City Councilor",
-      "image": "assets/images/officials/sb5.jpg"
-    },
-    {
-      "name": "Hon. Raul Antopuesto",
-      "title": "City Councilor",
-      "image": "assets/images/officials/sb6.jpg"
-    },
-    {
-      "name": "Hon. Jerome Dayanghirang",
-      "title": "City Councilor",
-      "image": "assets/images/officials/sb7.jpg"
-    },
-    {
-      "name": "Hon. Junie Bardon",
-      "title": "City Councilor",
-      "image": "assets/images/officials/sb8.jpg"
-    },
-    {
-      "name": "Hon. Xander Bong Alcantara",
-      "title": "City Councilor",
-      "image": "assets/images/officials/sb9.jpg"
-    },
-    {
-      "name": "Hon. Edgar Valera",
-      "title": "City Councilor",
-      "image": "assets/images/officials/sb10.jpg"
-    }
+    { "name": "Hon. Edmundo Z. Pang Jr.", "title": "City Councilor" },
+    { "name": "Hon. Rogelio A. Pabio", "title": "City Councilor" },
+    { "name": "Hon. Xander Paul B. Alcantara", "title": "City Councilor" },
+    { "name": "Hon. Edgar T. Valera", "title": "City Councilor" },
+    { "name": "Hon. Xenna Princess D. Campos", "title": "City Councilor" },
+    { "name": "Hon. Francisco G. Bardon Jr.", "title": "City Councilor" },
+    { "name": "Hon. Jerome C. Dayanghirang", "title": "City Councilor" },
+    { "name": "Hon. Raul M. Antopuesto", "title": "City Councilor" },
+    { "name": "Hon. Jose Paolo Luis R. Rabat", "title": "City Councilor" },
+    { "name": "Hon. Tara Marie R. Gayta", "title": "City Councilor" }
   ]
 }

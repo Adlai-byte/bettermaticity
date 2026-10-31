@@ -27,9 +27,9 @@ function Avatar({ name, large = false }: { name: string; large?: boolean }) {
   );
 }
 
-// Elected officials in BetterSanFernando's directory style. Names are verified from the
-// May 2025 election; photos and contact details in data/officials.json are still
-// placeholders, so they are not shown — every contact slot defers to the office.
+// Elected officials in BetterSanFernando's directory style. Names and councilor order come
+// from mati.gov.ph; the City publishes no photos or office contacts for them, so every
+// contact slot defers to the office.
 export default function GovernmentOfficials() {
   const { t } = useLanguage();
   // Client-only filter; starts empty so all councilors are in the prerendered HTML.

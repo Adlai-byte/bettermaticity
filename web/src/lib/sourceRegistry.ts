@@ -123,13 +123,14 @@ export const sourceGroups: DatasetGroup[] = [
         summary:
           'Names and positions of the Mayor, Vice Mayor and City Councilors for the 2025–2028 term.',
         coverage:
-          'Names come from the May 2025 local election results; a link to that source has not been recorded yet. Photos and contact details stay hidden until the City confirms them.',
-        publisher: 'May 2025 local election results',
-        period: '2025–2028 term',
-        checkedOn: null,
-        status: 'partial',
+          'Full names copied from the City Government’s own website, in the order it lists the councilors. The City does not publish photos or office contacts for officials there, so none are shown.',
+        publisher: 'City Government of Mati',
+        period: '2025–2028 term (8th Sangguniang Panlungsod)',
+        checkedOn: officials._checkedOn ?? null,
+        status: 'verified',
         page: { to: '/government/officials', label: 'Elected officials' },
-        sources: [],
+        sources: (officials._sources ?? []).map((s) => ({ label: s.title, url: s.url })),
+        downloads: [{ label: 'officials.json', href: '/data/officials.json' }],
         confirmWith: "City Mayor's Office (photos and contacts)",
       },
       {

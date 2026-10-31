@@ -23,7 +23,9 @@ export interface OfficialsData {
   vice_mayor?: Official;
   councilors?: Official[];
   _status?: string;
+  _checkedOn?: string;
   _note?: string;
+  _sources?: { title: string; url: string }[];
 }
 
 export interface LegislativeRecord {
@@ -58,7 +60,7 @@ export const ordinances: Ordinance[] =
   (ordinancesJson as { ordinances?: Ordinance[] }).ordinances ?? [];
 
 /** True when the dataset is still flagged as placeholder/draft. */
-export const officialsAreDraft = officialsJson && '_status' in officialsJson;
+export const officialsAreDraft = officials._status === 'draft';
 
 /** Extract the year from a resolution/ordinance number like "246-2025-11" -> 2025. */
 
