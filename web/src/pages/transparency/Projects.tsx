@@ -5,6 +5,8 @@ import { useLanguage } from '@/hooks/useLanguage';
 import { Band, Container, PageHeader } from '@/components/primitives';
 import { ProjectLedger } from '@/components/ProjectLedger';
 import { ProjectMap } from '@/components/ProjectMap';
+import { AwardedWorksTable } from '@/components/AwardedWorksTable';
+import { awardedWorks } from '@/lib/awardedWorks';
 import { ProcurementTable } from '@/components/ProcurementTable';
 import { formatChangeDate } from '@/lib/changelog';
 import { procurementCheckedOn, procurementNotices } from '@/lib/infrastructureData';
@@ -12,8 +14,8 @@ import { risingProjects } from '@/lib/risingProjects';
 
 // Projects and procurement, after BetterSanFernando's /projects/city-projects and
 // /procurement/bid-results: a barangay map of project records (#project-map), a searchable
-// list of the major projects (#rising-in-mati, linked from the homepage) and a searchable
-// table of procurement notices.
+// list of the major projects (#rising-in-mati, linked from the homepage), the City's
+// awarded civil works (#awarded-works) and a searchable table of procurement notices.
 export default function Projects() {
   const { t, language } = useLanguage();
 
@@ -40,7 +42,8 @@ export default function Projects() {
         title={t('projects-page-name')}
         description={t('projects-lede')}
         meta={[
-          t('projects-count', { count: risingProjects.length }),
+          t('projects-major-count', { count: risingProjects.length }),
+          t('works-count', { count: awardedWorks.length }),
           t('projects-notice-count', { count: procurementNotices.length }),
           t('projects-checked-on', { date: formatChangeDate(procurementCheckedOn, language) }),
         ]}
@@ -57,6 +60,15 @@ export default function Projects() {
         lede={t('rising-note')}
       >
         <ProjectLedger />
+      </Band>
+
+      <Band
+        id="awarded-works"
+        eyebrow={t('works-eyebrow')}
+        title={t('works-title')}
+        lede={t('works-lede')}
+      >
+        <AwardedWorksTable />
       </Band>
 
       <Band

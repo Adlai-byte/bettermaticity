@@ -304,7 +304,7 @@ export const sourceGroups: DatasetGroup[] = [
         period: `${awardedWorks.reports[0].period} – ${awardedWorks.reports[awardedWorks.reports.length - 1].period}`,
         checkedOn: awardedWorks.checkedOn,
         status: 'sourced',
-        page: { to: '/transparency/projects#project-map', label: 'Project map' },
+        page: { to: '/transparency/projects#awarded-works', label: 'Awarded civil works' },
         sources: awardedWorks.reports
           .filter((r) => r.status === 'read')
           .map((r) => ({

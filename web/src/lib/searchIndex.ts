@@ -141,7 +141,7 @@ export function buildSearchIndex(t: Translate): SearchRecord[] {
       type: 'project' as const,
       title: w.name,
       desc: `${w.location} · ${w.period}`,
-      to: '/transparency/projects#project-map',
+      to: '/transparency/projects#awarded-works',
       keywords: w.winningBidder,
     })),
     ...procurementNotices.map((n) => ({
