@@ -24,6 +24,7 @@ const FEED_TO_DATASET: Record<string, string> = {
   'official-documents.json': 'documents',
   'official-links.json': 'official-links',
   'city-offices.json': 'offices',
+  'awarded-civil-works.json': 'awarded-civil-works',
 };
 const NOT_ON_SITE = new Set([
   'changelog.json', // the site's own release notes, not public data

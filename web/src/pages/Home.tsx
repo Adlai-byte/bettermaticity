@@ -51,6 +51,7 @@ import {
 import { annualFinancials, fiscalSource } from '@/lib/budgetData';
 import { officials } from '@/lib/govData';
 import { RisingProjects } from '@/components/RisingProjects';
+import { ProjectMap } from '@/components/ProjectMap';
 
 const FEEL_MATI_LOGO = '/assets/images/logo/feel-mati.png';
 
@@ -408,6 +409,14 @@ export default function Home() {
         </section>
 
         <RisingProjects />
+
+        {/* ── Project map ──────────────────────────────────────────────────── */}
+        <section id="project-map" className="border-y border-line bg-white py-14">
+          <Container>
+            <SectionHead eyebrow={t('map-eyebrow')} title={t('map-title')} lede={t('map-lede')} />
+            <ProjectMap compact />
+          </Container>
+        </section>
 
         {/* ── Feel Mati — tourism ──────────────────────────────────────────── */}
         <section className="bg-navy py-16">

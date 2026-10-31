@@ -26,6 +26,10 @@
   --color-navy: #123c7a; /* Pujada navy — dark surfaces & headings */
   --color-royal: #2b62ee; /* royal blue — primary accent */
   --color-amber: #ffc001; /* Feel Mati amber */
+  /* Project map density scale: none → light → mid, then royal and navy. */
+  --color-map-0: #e7ebf1;
+  --color-map-1: #c9d9fb;
+  --color-map-2: #8fb0f6;
 
   /* Named versions of the colours the site already hard-codes (see the sweep in the
      restyle plan). Values are BetterMati's own; only the structure follows BetterSanFernando.

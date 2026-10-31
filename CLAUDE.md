@@ -70,6 +70,8 @@ import data from '@data/services.json'; // → repo-root data/services.json
 
 To change displayed content, edit the JSON — not the components. Feeds: `services.json`, `officials.json`, `resolutions.json`, `ordinances.json`, `dpwh-projects.json`, `competitive-index.json`, `demographics.json`, `fiscal_transparency.json`, `news.json`.
 
+The project map (`components/ProjectMap.tsx`, on `/transparency/projects` and Home) reads `awarded-civil-works.json` (the City's FDP Bid Results on Civil Works) plus notices and major projects, and draws barangays from `web/src/lib/barangayPaths.json`. That file is generated from `data/mati/dist/mati_barangays.geojson` by `node web/scripts/build-barangay-paths.mjs`; rerun it whenever the boundary file changes (a test fails if they drift).
+
 The one exception is **`news.json`**, fetched at runtime from `/data/news.json` by `useNews` so news can be updated without a rebuild (the `admin/` news editor writes it).
 
 `data/` is copied wholesale into `dist/data/` by `build.sh`, and the dev server is configured with `fs.allow: ['..']` so the root `data/` is importable during `npm run dev`.

@@ -19,6 +19,7 @@ import {
 import { currentYear, fiscalSource, fiscalYears, specialFunds } from '@/lib/budgetData';
 import { procurementCheckedOn, procurementNotices } from '@/lib/infrastructureData';
 import { projectsCheckedOn, risingProjects } from '@/lib/risingProjects';
+import awardedWorks from '@data/awarded-civil-works.json';
 import { services } from '@/lib/services';
 import { serviceGuides, serviceReferences, serviceReviewDate } from '@/lib/serviceReferences';
 import { attractions } from '@/lib/tourismData';
@@ -212,7 +213,7 @@ export const sourceGroups: DatasetGroup[] = [
         unit: 'barangays',
         summary: `Names, PSGC codes and 2024 populations of every barangay, totalling ${totalPopulation.toLocaleString('en-PH')} residents.`,
         coverage:
-          'Counts are the 2024 census (POPCEN). Barangay land areas are left out because the boundary data available overstates them.',
+          'Counts are the 2024 census (POPCEN). Barangay land areas are left out because the boundary data available overstates them. The project map draws barangay boundaries from faeldon/philippines-json-maps (PSGC 2023); they are approximate.',
         publisher: 'Philippine Statistics Authority',
         period: '2024 POPCEN',
         checkedOn: statisticsCheckedOn,
@@ -290,6 +291,27 @@ export const sourceGroups: DatasetGroup[] = [
           ...[...fiscalYears].reverse().map((y) => ({ label: y.source.title, url: y.source.url })),
         ],
         downloads: [{ label: 'fiscal_transparency.json', href: '/data/fiscal_transparency.json' }],
+      },
+      {
+        id: 'awarded-civil-works',
+        title: 'Awarded civil works',
+        count: awardedWorks.works.length,
+        unit: 'works',
+        summary:
+          'Civil works the City’s Bids and Awards Committee reported as bid out, with location, budget ceiling, winning bidder, winning bid and date. They feed the project map.',
+        coverage: `Transcribed row by row from the City’s quarterly “Bid Results on Civil Works” Full Disclosure postings, ${awardedWorks.reports.filter((r) => r.status === 'read').length} of ${awardedWorks.reports.length} quarters (the rest return a server error on the portal). A barangay is assigned only where the form’s own Location column names it. Winning bids are not final contract costs or actual spending.`,
+        publisher: 'City Government of Mati (Bids and Awards Committee), via the DILG FDP Portal',
+        period: `${awardedWorks.reports[0].period} – ${awardedWorks.reports[awardedWorks.reports.length - 1].period}`,
+        checkedOn: awardedWorks.checkedOn,
+        status: 'sourced',
+        page: { to: '/transparency/projects#project-map', label: 'Project map' },
+        sources: awardedWorks.reports
+          .filter((r) => r.status === 'read')
+          .map((r) => ({
+            label: `Bid Results on Civil Works, ${r.period}`,
+            url: `https://fdpp.dilg.gov.ph/fdpp/report/document-download?id=${r.portalId}`,
+          })),
+        confirmWith: 'BAC Secretariat (missing quarters, contract costs)',
       },
       {
         id: 'procurement',

@@ -37,7 +37,8 @@
           "label": "Philippine News Agency · 20 Jan 2026",
           "url": "https://www.pna.gov.ph/articles/1267356"
         }
-      ]
+      ],
+      "barangays": ["1102509018"]
     },
     {
       "id": "fish-port-phase-2",
@@ -88,7 +89,8 @@
           "label": "DBM · NEP FY2027, Volume II-B, Details of DPWH programs/projects, p. 284 (Region XI)",
           "url": "https://www.dbm.gov.ph/wp-content/uploads/NEP2027/DPWH/Details-of-DPWH.pdf#page=174"
         }
-      ]
+      ],
+      "barangays": ["1102509020"]
     }
   ]
 }

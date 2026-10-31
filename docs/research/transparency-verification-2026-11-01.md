@@ -304,3 +304,63 @@ for a report name returns one entry instead of a dozen quarterly filings.
 - **Barangay captains:** no official post-election list yet.
 
 All three are on the LGU checklist.
+
+## Addendum: awarded civil works for the project map
+
+The project map (`/transparency/projects#project-map`, teaser on Home) counts project
+records by barangay. Its main source is new: the City's quarterly FDP Form 10a
+"Bid Results on Civil Works" postings, transcribed to `data/awarded-civil-works.json`.
+
+- **Reports:** 11 Bid Results postings for Q4 2023 to Q2 2026. The 7 that download were
+  read (portal ids 59797, 87704, 125676, 150946, 157063, 233045, 253039). Q2 2024 and
+  Q2–Q4 2025 return a server error and are listed as unavailable.
+- **Extraction:**
+  - Each file was parsed by locating the "FDP Form 10a" heading and its header row
+    (Reference No., Name of Project, Approved Budget for Contract, Location, Winning
+    Bidder, Name and Address, Bid Amount, Bidding Date).
+  - Every table was then printed and checked by eye.
+  - Two files hold the form twice: an empty sheet-1 copy, and the filled copy in columns
+    S–AA of sheet 3. Q3 2024 holds it only in columns S–AA.
+  - The consulting-services form (10c) also has a Location column and is excluded.
+- **Result:** 38 works.
+
+| Quarter | Works |
+| ------- | ----: |
+| Q4 2023 |     4 |
+| Q1 2024 |     1 |
+| Q3 2024 |     1 |
+| Q4 2024 |    23 |
+| Q1 2025 |     4 |
+| Q1 2026 |     4 |
+| Q2 2026 |     1 |
+
+- **Locations as printed:**
+  - Brgy. Central 24, Badas 4, Dahican 2, Sainz 2, and Dawan, Mayo, Sanghay, Don Martin
+    Marundan and Mamali 1 each.
+  - "Brgy. Central and Dahican" counts for both.
+  - No work's Location column names "City of Mati" alone; citywide records on the map come
+    from notices and major projects.
+- **Left out or kept as printed:**
+  - Q2 2026 rows 2–4 print only a location, with no project, amounts or bidder; they were
+    left out.
+  - The City's own numbering skips items 11 and 14 in Q4 2024.
+  - Q1 2026 ref 115 prints its bid amount as "990,00.000.00". It is kept as printed
+    (`bidAmountAsPrinted`) and the amount is left blank.
+- **Duplicate:** Q4 2024 ref 3058 (Level II water system, Barangay Badas, ABC 2,500,000)
+  is the same project as PhilGEPS 11374254 and is counted once (`sameAs`).
+- **Spot-checked against the spreadsheet cells** (name, location, ABC, bidder, bid,
+  date): 150946-2847 (Mayo farm-to-market road), 87704-176 (100 core shelters, Dahican),
+  157063-42 (swine multiplier farm, Sainz).
+- **Dates:** the spreadsheets store dates as serials, converted as 1899-12-30 + n days
+  (45589 = 2024-10-24).
+- **Map totals:** 48 records.
+  - 38 awarded works.
+  - 5 civil-works notices: PhilGEPS 13293157, 13288404, 13288972 and 13280306, and DPWH
+    11439666; PhilGEPS 11374254 is counted as its awarded work.
+  - 5 major projects. Macambol water is tagged Macambol and the Matiao coastal road
+    Matiao; the airport and the two fish port items are citywide.
+  - Barangay-attributed: 42 records across 11 barangays. Citywide or unassigned: 6.
+- **Boundaries:** `data/mati/dist/mati_barangays.geojson` (faeldon/philippines-json-maps,
+  PSGC 2023), projected to SVG paths by `web/scripts/build-barangay-paths.mjs` into
+  `web/src/lib/barangayPaths.json`. A test fails if the two drift apart. The map carries
+  the attribution `data/mati/CLAUDE.md` requires.

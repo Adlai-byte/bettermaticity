@@ -10,6 +10,7 @@ import { risingProjects, projectAnchor } from '@/lib/risingProjects';
 import { noticeSearchText, procurementNotices } from '@/lib/infrastructureData';
 import { fdpRecords, officialDocuments } from '@/lib/transparencyData';
 import { officialLinks } from '@/lib/officialLinks';
+import awardedWorks from '@data/awarded-civil-works.json';
 
 export type ResultType =
   | 'page'
@@ -134,6 +135,14 @@ export function buildSearchIndex(t: Translate): SearchRecord[] {
       desc: t(`rising-scope-${p.scope}`),
       to: `/transparency/projects#${projectAnchor(p)}`,
       keywords: t(p.detailKey),
+    })),
+    ...awardedWorks.works.map((w) => ({
+      id: `awarded:${w.id}`,
+      type: 'project' as const,
+      title: w.name,
+      desc: `${w.location} · ${w.period}`,
+      to: '/transparency/projects#project-map',
+      keywords: w.winningBidder,
     })),
     ...procurementNotices.map((n) => ({
       id: `notice:${n.reference}`,
