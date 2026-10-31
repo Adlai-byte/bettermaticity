@@ -226,6 +226,9 @@ active language automatically falls back to English.
 | Filipino | `fil` | Complete                                                              |
 | Cebuano  | `ceb` | Starter set (high-visibility UI; remaining keys fall back to English) |
 
+To see what is left to translate, run `node scripts/i18n-report.mjs` (add `--keys <area#|prefix>` for a
+to-do list, or `--json` for machine-readable output).
+
 ## Project Structure
 
 ```
