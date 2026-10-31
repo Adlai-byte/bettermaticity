@@ -61,6 +61,8 @@ function RecordItem({ record }: { record: MapRecord }) {
 // Barangay map of published project records, after BetterSanFernando's "See Projects Across
 // San Fernando": shading counts records whose own source names the barangay. The full map
 // lets readers pick a barangay to list its records; the compact one (Home) links here.
+// The map lies on its side (north to the left, see build-barangay-paths.mjs) so the long
+// city fits a wide section; the notes sit under it and the panel runs alongside both.
 export function ProjectMap({ compact = false }: { compact?: boolean }) {
   const { t } = useLanguage();
   const [selected, setSelected] = useState('');
@@ -70,23 +72,25 @@ export function ProjectMap({ compact = false }: { compact?: boolean }) {
   const select = (psgc: string) => setSelected((cur) => (cur === psgc ? '' : psgc));
 
   return (
-    <div
-      className={cn(
-        'mt-8 grid gap-6',
-        compact
-          ? 'md:grid-cols-[minmax(0,1fr)_minmax(0,24rem)]'
-          : 'lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)]'
-      )}
-    >
-      <figure className="flex min-w-0 flex-col border border-line bg-surface-subtle p-4 sm:p-6">
-        <p className="min-h-5 text-sm text-ink-soft" aria-live="polite">
-          {focus
-            ? t('map-focus', { name: focus.name, count: countOf(focus.psgc) })
-            : t(compact ? 'map-hint-compact' : 'map-hint')}
-        </p>
+    <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)] lg:grid-rows-[auto_1fr]">
+      <figure className="flex min-w-0 flex-col border border-line bg-surface-subtle p-4 sm:p-5 lg:col-start-1 lg:row-start-1">
+        <div className="flex items-start justify-between gap-4">
+          <p className="min-h-5 text-sm text-ink-soft" aria-live="polite">
+            {focus
+              ? t('map-focus', { name: focus.name, count: countOf(focus.psgc) })
+              : t(compact ? 'map-hint-compact' : 'map-hint')}
+          </p>
+          <span
+            className="inline-flex shrink-0 items-center gap-1 font-mono text-[0.6875rem] font-semibold text-ink-muted"
+            title={t('map-north')}
+          >
+            <ArrowLeft className="size-3.5" aria-hidden="true" />N
+            <span className="sr-only"> ({t('map-north')})</span>
+          </span>
+        </div>
         <svg
           viewBox={mapViewBox}
-          className="mx-auto mt-3 h-[26rem] w-auto max-w-full sm:h-[34rem]"
+          className="mt-3 h-auto w-full"
           role="group"
           aria-label={t('map-svg-label')}
         >
@@ -139,7 +143,7 @@ export function ProjectMap({ compact = false }: { compact?: boolean }) {
             />
           ) : null}
         </svg>
-        <figcaption className="mt-4 text-[0.6875rem] leading-5 text-ink-muted">
+        <figcaption className="mt-3 text-[0.6875rem] leading-5 text-ink-muted">
           {t('map-attribution')}
         </figcaption>
         <table className="sr-only">
@@ -161,7 +165,10 @@ export function ProjectMap({ compact = false }: { compact?: boolean }) {
         </table>
       </figure>
 
-      <aside className="min-w-0 border border-line bg-white p-6" aria-live="polite">
+      <aside
+        className="min-w-0 border border-line bg-white p-6 lg:col-start-2 lg:row-span-2 lg:row-start-1"
+        aria-live="polite"
+      >
         {!compact ? (
           <div className="mb-5">
             <FilterSelect
@@ -196,7 +203,7 @@ export function ProjectMap({ compact = false }: { compact?: boolean }) {
               {t('map-records', { count: countOf(shape.psgc) })}
             </p>
             {countOf(shape.psgc) ? (
-              <ul className="mt-3 max-h-[28rem] divide-y divide-line overflow-y-auto border-t border-line">
+              <ul className="mt-3 max-h-[20rem] divide-y divide-line overflow-y-auto border-t border-line">
                 {recordsByBarangay.get(shape.psgc)!.map((r) => (
                   <RecordItem key={r.id} record={r} />
                 ))}
@@ -243,13 +250,6 @@ export function ProjectMap({ compact = false }: { compact?: boolean }) {
               </div>
               <p className="mt-2 text-xs leading-5 text-ink-muted">{t('map-density-help')}</p>
             </div>
-            <div className="mt-5 border-t border-line pt-5">
-              <p className="font-mono text-xs font-semibold tracking-[0.12em] text-heading uppercase">
-                {t('map-read-title')}
-              </p>
-              <p className="mt-2 text-xs leading-5 text-ink-soft">{t('map-read-1')}</p>
-              <p className="mt-2 text-xs leading-5 text-ink-soft">{t('map-read-2')}</p>
-            </div>
             {compact ? (
               <div className="mt-5 flex flex-col gap-2 border-t border-line pt-5 text-sm">
                 <AppLink
@@ -271,6 +271,16 @@ export function ProjectMap({ compact = false }: { compact?: boolean }) {
           </div>
         )}
       </aside>
+
+      <div className="min-w-0 border border-line bg-white p-5 lg:col-start-1 lg:row-start-2">
+        <p className="font-mono text-xs font-semibold tracking-[0.12em] text-heading uppercase">
+          {t('map-read-title')}
+        </p>
+        <div className="mt-2 grid gap-3 md:grid-cols-2 md:gap-6">
+          <p className="text-xs leading-5 text-ink-soft">{t('map-read-1')}</p>
+          <p className="text-xs leading-5 text-ink-soft">{t('map-read-2')}</p>
+        </div>
+      </div>
     </div>
   );
 }

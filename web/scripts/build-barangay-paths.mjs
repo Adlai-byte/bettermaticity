@@ -1,11 +1,13 @@
 // Projects the barangay boundaries in data/mati/dist/mati_barangays.geojson into compact SVG
 // path strings for the project map (web/src/lib/barangayPaths.json). Run after the boundary
 // file is regenerated:  node web/scripts/build-barangay-paths.mjs
+// The map is turned a quarter turn counter-clockwise so the long north-south city fits a wide
+// section: north points left and the Pacific coast is at the top. The map shows a north arrow.
 // A test (projectMap.test.ts) fails if the output no longer matches the boundary file.
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
-const WIDTH = 600;
+const WIDTH = 1200;
 
 export function buildBarangayPaths(geojson) {
   const rings = (g) => (g.type === 'Polygon' ? g.coordinates : g.coordinates.flat());
@@ -16,16 +18,17 @@ export function buildBarangayPaths(geojson) {
   const [minLat, maxLat] = [Math.min(...lats), Math.max(...lats)];
   // Equirectangular: shrink longitude by cos(latitude) so the city keeps its shape.
   const k = Math.cos((((minLat + maxLat) / 2) * Math.PI) / 180);
-  const scale = WIDTH / ((maxLon - minLon) * k);
-  const x = (lon) => Math.round((lon - minLon) * k * scale * 10) / 10;
-  const y = (lat) => Math.round((maxLat - lat) * scale * 10) / 10;
-  const height = Math.ceil((maxLat - minLat) * scale);
+  // Rotated: x runs north → south, y runs east → west.
+  const scale = WIDTH / (maxLat - minLat);
+  const x = (lat) => Math.round((maxLat - lat) * scale * 10) / 10;
+  const y = (lon) => Math.round((maxLon - lon) * k * scale * 10) / 10;
+  const height = Math.ceil((maxLon - minLon) * k * scale);
   const shapes = geojson.features
     .map((f) => ({
       psgc: f.properties.psgc_code,
       name: f.properties.barangay,
       d: rings(f.geometry)
-        .map((ring) => `M${ring.map(([lon, lat]) => `${x(lon)},${y(lat)}`).join('L')}Z`)
+        .map((ring) => `M${ring.map(([lon, lat]) => `${x(lat)},${y(lon)}`).join('L')}Z`)
         .join(''),
     }))
     .sort((a, b) => a.psgc.localeCompare(b.psgc));
