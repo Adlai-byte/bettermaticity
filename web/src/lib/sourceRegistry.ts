@@ -320,8 +320,8 @@ export const sourceGroups: DatasetGroup[] = [
         unit: 'projects',
         summary: 'National and city projects in Mati, with their funding status.',
         coverage:
-          'One project rests on the national budget document and two on PhilGEPS notices; the other three rely on Philippine News Agency reports.',
-        publisher: 'DBM (GAA), PhilGEPS and Philippine News Agency',
+          'Two projects rest on national budget documents (the 2026 appropriation for Mati Airport and a 2027 proposal for the Matiao–Magsaysay coastal road), two on PhilGEPS notices, and three on Philippine News Agency reports. A budget proposal is not funding until Congress passes it.',
+        publisher: 'DBM (GAA and NEP), PhilGEPS and Philippine News Agency',
         period: 'Funding status as reported',
         checkedOn: projectsCheckedOn,
         status: 'partial',
@@ -335,7 +335,7 @@ export const sourceGroups: DatasetGroup[] = [
         unit: 'reports',
         summary: `Budget, fund-utilization, procurement and cash-flow reports the City posted, ${fdpYears[0]}–${fdpYears[fdpYears.length - 1]}.`,
         coverage:
-          'The City’s postings on the DILG Full Disclosure portal (posted 2024–2026), as the portal lists them, each download link tried; some files return a server error on the portal and are marked. Older reports are archived copies of files the City once posted on its website (2013–2014), each opened and checked. Years in between are missing.',
+          'The City’s postings on the DILG Full Disclosure portal (posted 2024–2026), as the portal lists them, each download link tried; some files return a server error on the portal and are marked. Older reports are archived copies of files the City once posted on its website (reports from 2012–2014), each opened and checked. Years in between are missing.',
         publisher:
           'City Government of Mati, via the DILG Full Disclosure Policy Portal and the Internet Archive',
         period: `${fdpYears[0]}–${fdpYears[fdpYears.length - 1]}`,
