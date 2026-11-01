@@ -6,7 +6,7 @@ A civic-tech portal that gives the people of Mati, Davao Oriental, Philippines p
 >
 > BetterMati.org started from a template built for LGU Solano and has been rebranded to the City of Mati: name, domain, geography (`PH-DAO`), terminology (City / Sangguniang Panlungsod) and artwork. Much of the content is now sourced and checked (see [Data sources](https://bettermati.org/transparency/sources)), but these records are still **clearly-marked placeholders** (`[Placeholder]`, `[TODO]` or `_status: "draft"`) until the City confirms them:
 >
-> - **Officials' photos and office contacts** — names come from mati.gov.ph (`data/officials.json`), but the City doesn't publish photos or contacts for its officials there.
+> - **Officials' photos and office contacts** — names come from mati.gov.ph (`data/officials.json`). The City publishes only the Mayor's portrait and an unlabelled council group photo (both used, self-hosted in `assets/images/officials/`); individual photos of the Vice Mayor and councilors, and office contacts, are not published.
 > - **Barangays** — the 26 barangays and their populations are verified (`data/mati/`); barangay captains and contacts are not.
 > - **Legislation** — `data/ordinances.json` and `data/resolutions.json` list titles only; full texts are pending.
 > - **Office contacts** — City Hall and office phone numbers and emails need confirmation from the City. (Emergency hotlines in `data/emergency-hotlines.json` are transcribed from the City DRRMO's official graphic.)

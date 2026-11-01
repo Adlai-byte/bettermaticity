@@ -8,10 +8,19 @@ import ordinancesJson from '@data/ordinances.json';
  * legislative records distinguish government reporting from signed full texts.
  */
 
+export interface ImageSource {
+  title: string;
+  url: string;
+  originalUrl?: string;
+  note?: string;
+}
+
 export interface Official {
   name: string;
   title: string;
+  /** A photo the City itself publishes for this official, self-hosted under /assets. */
   image?: string;
+  imageSource?: ImageSource;
   email?: string;
   phone?: string;
   tel?: string;
@@ -26,6 +35,16 @@ export interface OfficialsData {
   _checkedOn?: string;
   _note?: string;
   _sources?: { title: string; url: string; originalUrl?: string }[];
+  /** The City's own unlabelled group photo of the council; never cropped to individuals. */
+  _councilPhoto?: {
+    src: string;
+    srcSmall: string;
+    width: number;
+    height: number;
+    alt: string;
+    source: ImageSource;
+    note?: string;
+  };
 }
 
 export interface LegislativeRecord {

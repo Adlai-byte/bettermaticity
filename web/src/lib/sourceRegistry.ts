@@ -124,7 +124,7 @@ export const sourceGroups: DatasetGroup[] = [
         summary:
           'Names and positions of the Mayor, Vice Mayor and City Councilors for the 2025–2028 term.',
         coverage:
-          'Full names copied from the City Government’s own website, in the order it lists the councilors, and cited through Internet Archive copies because the live site currently loads unrelated outside content. The City does not publish photos or office contacts for officials there, so none are shown.',
+          'Full names copied from the City Government’s own website, in the order it lists the councilors, and cited through Internet Archive copies because the live site currently loads unrelated outside content. The only photos are the City’s own: the Mayor’s portrait, cropped from the banner on his page, and an unlabelled group photo of the council, shown whole. No office contacts are published.',
         publisher: 'City Government of Mati',
         period: '2025–2028 term (8th Sangguniang Panlungsod)',
         checkedOn: officials._checkedOn ?? null,

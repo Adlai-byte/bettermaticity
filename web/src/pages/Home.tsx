@@ -667,11 +667,13 @@ export default function Home() {
                     {
                       role: 'Elected Mayor',
                       name: officials.mayor?.name ?? 'Hon. [to be confirmed]',
+                      image: officials.mayor?.image,
                       sub: 'City Mayor · City of Mati',
                     },
                     {
                       role: 'Elected Vice Mayor',
                       name: officials.vice_mayor?.name ?? 'Hon. [to be confirmed]',
+                      image: officials.vice_mayor?.image,
                       sub: 'City Vice Mayor · Sangguniang Panlungsod',
                     },
                   ].map((l) => (
@@ -680,9 +682,20 @@ export default function Home() {
                       variants={fadeUp}
                       className="flex items-center gap-3.5 bg-white p-[18px]"
                     >
-                      <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-royal-tint text-[0.9375rem] font-bold text-royal">
-                        {officialInitials(l.name)}
-                      </span>
+                      {l.image ? (
+                        <img
+                          src={l.image}
+                          alt=""
+                          width={48}
+                          height={48}
+                          loading="lazy"
+                          className="size-12 shrink-0 rounded-full bg-royal-tint object-cover"
+                        />
+                      ) : (
+                        <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-royal-tint text-[0.9375rem] font-bold text-royal">
+                          {officialInitials(l.name)}
+                        </span>
+                      )}
                       <div>
                         <span className="inline-flex h-5 items-center bg-royal-tint px-2.5 text-[0.6875rem] font-semibold text-royal">
                           {l.role}

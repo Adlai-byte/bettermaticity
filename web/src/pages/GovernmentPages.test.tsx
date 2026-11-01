@@ -1,3 +1,5 @@
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import { cleanup, fireEvent, render, screen, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { afterEach, describe, expect, it, vi } from 'vitest';
@@ -42,6 +44,8 @@ describe('government hub', () => {
   });
 });
 
+const ROOT = join(__dirname, '../../..');
+
 describe('elected officials page', () => {
   it('lists every verified name and hides placeholder contact details', () => {
     const { container } = renderAt(<GovernmentOfficials />);
@@ -52,6 +56,23 @@ describe('elected officials page', () => {
     for (const name of names) expect(screen.getByRole('heading', { name })).toBeTruthy();
     expect(container.textContent).not.toMatch(PLACEHOLDER_CONTACT);
     expect(container.querySelector('a[href^="mailto:"], a[href^="tel:"]')).toBeNull();
+  });
+
+  it('shows only photos the City publishes, and names no one in the group photo', () => {
+    const { container } = renderAt(<GovernmentOfficials />);
+    const people = [officials.mayor!, officials.vice_mayor!, ...officials.councilors!];
+    // Only the Mayor has a portrait; no one else gets a face by guesswork.
+    expect(people.filter((o) => o.image).map((o) => o.name)).toEqual([officials.mayor!.name]);
+    for (const o of people.filter((p) => p.image)) {
+      expect(existsSync(join(ROOT, o.image!)), o.image).toBe(true);
+      expect(o.imageSource?.url, o.name).toContain('web.archive.org');
+    }
+    const photo = officials._councilPhoto!;
+    for (const src of [photo.src, photo.srcSmall])
+      expect(existsSync(join(ROOT, src)), src).toBe(true);
+    const img = container.querySelector(`img[src="${photo.src}"]`)!;
+    expect(img.getAttribute('alt')).toBe(photo.alt);
+    expect(img.closest('figure')!.textContent).toContain('City Government of Mati');
   });
 
   it('filters councilors by name', () => {

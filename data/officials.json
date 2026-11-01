@@ -1,7 +1,7 @@
 {
   "_status": "verified",
   "_checkedOn": "2026-11-01",
-  "_note": "Names and order transcribed from the City Government of Mati's own website (8th Sangguniang Panlungsod, 2025–2028 term), checked live on 2026-11-01 and against the Internet Archive copies cited in _sources. The live site currently loads an unrelated outside script, so the archived copies (8 May 2026, same names) are cited instead. Councilors are listed in the order the City's Sangguniang Panlungsod page uses; the City prints them in capitals. Photos and office contacts are not published there, so none are recorded.",
+  "_note": "Names and order transcribed from the City Government of Mati's own website (8th Sangguniang Panlungsod, 2025–2028 term), checked live on 2026-11-01 and against the Internet Archive copies cited in _sources. The live site currently loads an unrelated outside script, so the archived copies (8 May 2026, same names) are cited instead. Councilors are listed in the order the City's Sangguniang Panlungsod page uses; the City prints them in capitals. The City publishes no individual photos except the Mayor's (on his page's banner, cropped here) and an unlabelled group photo of the 8th City Council, shown as a group photo only; office contacts are not published, so none are recorded.",
   "_sources": [
     {
       "title": "Sangguniang Panglungsod — City Government of Mati (archived 8 May 2026)",
@@ -14,9 +14,29 @@
       "originalUrl": "https://mati.gov.ph/city-of-mati-mayor/"
     }
   ],
+  "_councilPhoto": {
+    "src": "/assets/images/officials/8th-city-council-inaugural-1600.webp",
+    "srcSmall": "/assets/images/officials/8th-city-council-inaugural-800.webp",
+    "width": 1600,
+    "height": 640,
+    "alt": "Members of the 8th City Council of Mati standing in a row at their inaugural session, in front of a backdrop announcing the session.",
+    "source": {
+      "title": "Sangguniang Panglungsod page banner — City Government of Mati (archived 25 April 2026)",
+      "url": "https://web.archive.org/web/20260425111641/https://mati.gov.ph/wp-content/uploads/2026/04/Unity-is-our-Strategy.-Education-is-our-Foundation.-Service-is-our-Purpose.-God-is-our-Strength.-1-2-2048x819.png",
+      "originalUrl": "https://mati.gov.ph/sangguniang-panglungsod/"
+    },
+    "note": "The City does not name the people in this photo, so it is shown as a group photo only."
+  },
   "mayor": {
     "name": "Hon. Joel Mayo Z. Almario",
-    "title": "City Mayor"
+    "title": "City Mayor",
+    "image": "/assets/images/officials/mayor-almario.webp",
+    "imageSource": {
+      "title": "City of Mati Mayor page banner — City Government of Mati (archived 15 April 2026)",
+      "url": "https://web.archive.org/web/20260415123344/https://mati.gov.ph/wp-content/uploads/2026/04/Unity-is-our-Strategy.-Education-is-our-Foundation.-Service-is-our-Purpose.-God-is-our-Strength.-1-2048x819.png",
+      "originalUrl": "https://mati.gov.ph/city-of-mati-mayor/",
+      "note": "Cropped to a headshot from the City banner on the Mayor page, which names him."
+    }
   },
   "vice_mayor": {
     "name": "Hon. Lorenzo Rabat",
