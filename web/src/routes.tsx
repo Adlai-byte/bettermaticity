@@ -95,6 +95,10 @@ export const routes: RouteRecord[] = [
         lazy: () => import('./pages/About').then((m) => ({ Component: m.default })),
       },
       {
+        path: 'about/logo',
+        lazy: () => import('./pages/AboutLogo').then((m) => ({ Component: m.default })),
+      },
+      {
         path: 'government',
         lazy: () => import('./pages/Government').then((m) => ({ Component: m.default })),
       },

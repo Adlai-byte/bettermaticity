@@ -158,6 +158,7 @@ export const GROUPS: IndexGroup[] = [
     desc: 'sitemap-group-about-desc',
     links: [
       { to: '/about', key: 'nav-about', desc: 'sitemap-item-about-desc' },
+      { to: '/about/logo', key: 'logo-title', desc: 'sitemap-item-logo-desc' },
       { to: '/faq', key: 'footer-faq', desc: 'sitemap-item-faq-desc' },
       {
         to: '/accessibility',

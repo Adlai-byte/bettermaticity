@@ -35,7 +35,7 @@ Repo root:
 
 ## Routes — `migrated-routes.json` is the source of truth
 
-[`web/migrated-routes.json`](web/migrated-routes.json) lists every live route (65 today). It drives three things at once:
+[`web/migrated-routes.json`](web/migrated-routes.json) lists every live route (66 today). It drives three things at once:
 
 1. the SSG prerender set (`ssgOptions.includedRoutes` in [`web/vite.config.ts`](web/vite.config.ts)),
 2. `build.sh`'s flat→folder pass and the route count in its summary,

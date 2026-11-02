@@ -4,7 +4,14 @@ import { FaGithub } from 'react-icons/fa';
 import { Seo } from '@/components/Seo';
 import { AppLink } from '@/components/AppLink';
 import { useLanguage } from '@/hooks/useLanguage';
-import { Container, Eyebrow, PageHeader, Section, SectionHead } from '@/components/primitives';
+import {
+  Container,
+  Eyebrow,
+  PageHeader,
+  Section,
+  SectionHead,
+  TextLink,
+} from '@/components/primitives';
 import { services } from '@/lib/services';
 import { departments } from '@/lib/govDirectory';
 import { barangayCount } from '@/lib/statsData';
@@ -415,6 +422,9 @@ export default function About() {
                 {t('about-open-title')}
               </h2>
               <p className="mt-3 text-sm leading-6 text-ink-muted">{t('about-open-body')}</p>
+              <TextLink to="/about/logo" className="mt-4">
+                {t('about-logo-link')}
+              </TextLink>
             </div>
             <div className="flex flex-wrap gap-2">
               <a
