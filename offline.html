@@ -56,10 +56,22 @@
         font-weight: 700;
         letter-spacing: -0.02em;
         color: #111111;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.25rem;
+      }
+      .subheading {
+        font-size: 1.125rem;
+        font-weight: 500;
+        color: #495057;
+        margin-bottom: 0.75rem;
       }
       .subtitle {
         color: #495057;
+        margin-bottom: 0.35rem;
+        line-height: 1.5;
+      }
+      .subtitle-ceb {
+        color: #6c757d;
+        font-size: 0.9375rem;
         margin-bottom: 2rem;
         line-height: 1.5;
       }
@@ -164,10 +176,15 @@
         height="48"
       />
 
-      <h1 data-i18n="offline-you-are-currently-offline">You are currently offline</h1>
-      <p class="subtitle" data-i18n="offline-some-pages-may-not-be-available-right-now">
+      <h1>You are currently offline</h1>
+      <p class="subheading" lang="ceb">Ikaw kasamtangang offline</p>
+      <p class="subtitle">
         Some pages may not be available right now. Emergency hotlines are listed below for your
         convenience.
+      </p>
+      <p class="subtitle-ceb" lang="ceb">
+        Ang ubang mga panid mahimong dili ma-access karon. Ang mga hotline sa emerhensya nalista sa
+        ubos alang sa imong kasayon.
       </p>
 
       <div class="hotlines">
@@ -227,7 +244,9 @@
         </p>
       </div>
 
-      <button class="retry-btn" onclick="window.location.reload()">Try Again</button>
+      <button class="retry-btn" onclick="window.location.reload()">
+        Try Again &bull; Sulayi Pag-usab
+      </button>
     </main>
   </body>
 </html>
