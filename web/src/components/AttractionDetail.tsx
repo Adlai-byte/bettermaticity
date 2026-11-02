@@ -3,6 +3,7 @@ import { Seo } from '@/components/Seo';
 import { AppLink } from '@/components/AppLink';
 import { ImageSlot } from '@/components/ImageSlot';
 import { Container, Section } from '@/components/primitives';
+import { useLanguage } from '@/hooks/useLanguage';
 import { getAttraction } from '@/lib/tourismData';
 
 // OpenStreetMap embed centred on the attraction (same approach as Home's map).
@@ -18,13 +19,14 @@ function osmEmbed(lat: number, lng: number): string {
  * each attraction page is a one-liner that calls <AttractionDetail slug="..." />.
  */
 export function AttractionDetail({ slug }: { slug: string }) {
+  const { t } = useLanguage();
   const a = getAttraction(slug);
 
   if (!a) {
     return (
       <Section>
         <Container>
-          <p className="text-ink-muted">Attraction not found.</p>
+          <p className="text-ink-muted">{t('attraction-not-found')}</p>
           <AppLink to="/visit-mati" className="mt-4 inline-block text-royal underline">
             Back to Visit Mati
           </AppLink>

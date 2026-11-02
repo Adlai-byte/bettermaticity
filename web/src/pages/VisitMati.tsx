@@ -30,6 +30,7 @@ import { Seo } from '@/components/Seo';
 import { AppLink } from '@/components/AppLink';
 import { ImageSlot } from '@/components/ImageSlot';
 import { Container } from '@/components/primitives';
+import { useLanguage } from '@/hooks/useLanguage';
 import {
   LazyMotion,
   domAnimation,
@@ -229,6 +230,7 @@ function seasonBarClass(state: string): string {
 }
 
 export default function VisitMati() {
+  const { t } = useLanguage();
   const [active, setActive] = useState('All');
 
   const counts = useMemo(() => {
@@ -411,7 +413,7 @@ export default function VisitMati() {
           <Container>
             <div className="mb-6 flex flex-wrap items-end justify-between gap-5">
               <div>
-                <Eyebrow>Places to go</Eyebrow>
+                <Eyebrow>{t('visit-places-to-go')}</Eyebrow>
                 <h2 className="mt-2.5 font-display text-[2rem] font-extrabold tracking-[-0.03em] text-heading">
                   Where to go in Mati
                 </h2>
@@ -467,7 +469,7 @@ export default function VisitMati() {
               className="mb-6 flex flex-wrap items-end justify-between gap-4"
             >
               <div>
-                <Eyebrow>When to come</Eyebrow>
+                <Eyebrow>{t('visit-when-to-come')}</Eyebrow>
                 <h2 className="mt-2.5 font-display text-[2rem] font-extrabold tracking-[-0.03em] text-heading">
                   A year on the water
                 </h2>
@@ -594,7 +596,7 @@ export default function VisitMati() {
               viewport={revealViewport}
               className="mb-7 max-w-[640px]"
             >
-              <Eyebrow>Plan your trip</Eyebrow>
+              <Eyebrow>{t('visit-plan-your-trip')}</Eyebrow>
               <h2 className="mt-2.5 font-display text-[2rem] font-extrabold tracking-[-0.03em] text-heading">
                 Getting here, getting around
               </h2>

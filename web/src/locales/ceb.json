@@ -1745,5 +1745,14 @@
   "works-pages": "Mga panid sa nahatag nga trabaho",
   "works-footnote": "Gikopya linya por linya gikan sa mga taho sa “Bid Results on Civil Works” sa Dakbayan (FDP Form 10a) sa DILG Full Disclosure portal. Ang midaog nga bid mao ang gitanyag sa kontraktor, dili ang kataposang presyo sa kontrata o ang tinuod nga nagasto, ug kini nga mga taho wala magsulti kon nahuman ba ang trabaho. Ang mga taho alang sa Q2 2024 ug Q2–Q4 2025 wala ma-download gikan sa portal, busa ang ilang mga trabaho wala dinhi. Usa ka bid sa Q1 2026 gipakita eksakto sumala sa giimprinta sa Dakbayan tungod kay dili kini mabasa isip numero.",
   "projects-major-count_one": "{{count}} ka dagkong proyekto",
-  "projects-major-count_other": "{{count}} ka mga dagkong proyekto"
+  "projects-major-count_other": "{{count}} ka mga dagkong proyekto",
+  "volunteer-dialog-title": "Tabangi sa pagtukod sa BetterMati",
+  "volunteer-dialog-desc": "Ang BetterMati.org usa ka proyekto sa komunidad nga gitukod sa mga boluntaryo. Ang mga tigdesinyo, developer, magsusulat, ug maghuhubad giabiabi sa tanan.",
+  "volunteer-dialog-cta": "Pagboluntaryo uban kanamo",
+  "service-search-default-placeholder": "Pangita og mga serbisyo (pananglitan, birth certificate, business permit)",
+  "service-search-no-results": "Walay nakit-ang mga serbisyo.",
+  "attraction-not-found": "Wala makit-i ang atraksyon.",
+  "visit-places-to-go": "Mga lugar nga bisitahan",
+  "visit-when-to-come": "Kanus-a mobisita",
+  "visit-plan-your-trip": "Plano sa imong biyahe"
 }
