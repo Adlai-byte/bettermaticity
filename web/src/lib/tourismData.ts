@@ -27,13 +27,39 @@ export interface Attraction {
   note: string;
   /** Prompt shown in the ImageSlot placeholder until a photo is supplied. */
   imageLabel: string;
-  /** Public-path image URL; empty string renders the ImageSlot placeholder. */
-  image: string;
+  /** Id of an entry in `photos`; without one the ImageSlot placeholder shows. */
+  photo?: string;
   /** Featured attractions get a dedicated detail page and a linked card. */
   featured: boolean;
   highlights: string[];
   sections: AttractionSection[];
   coords?: { lat: number; lng: number };
+}
+
+export interface PhotoLink {
+  title: string;
+  url: string;
+}
+
+/** A photo on the Visit Mati pages (and Home), self-hosted under /assets/images/visit/. */
+export interface TourismPhoto {
+  id: string;
+  /** Large version (up to 1600 px wide) and an 800 px version for cards. */
+  src: string;
+  srcSmall: string;
+  width: number;
+  height: number;
+  alt: string;
+  /** Who published or took the photo, as credited on the page. */
+  by: string;
+  /** Set for Creative Commons photos; government photos carry none. */
+  license?: string;
+  licenseUrl?: string;
+  /** Where the photo was published; the first is the one cited beside it. */
+  sources: PhotoLink[];
+  /** The original image file, where it differs from the source page. */
+  file?: string;
+  note?: string;
 }
 
 export interface HeroCopy {
@@ -58,6 +84,7 @@ export interface Coast {
   blurb: string;
   tags: string[];
   linkLabel: string;
+  photo?: string;
 }
 
 export interface SeasonRow {
@@ -72,6 +99,7 @@ export interface Sambuokan {
   title: string;
   blurb: string;
   imageLabel: string;
+  photo?: string;
 }
 
 export interface PlanCard {
@@ -127,6 +155,15 @@ export const tourismOffice: TourismOffice = tourism.tourismOffice as TourismOffi
 export const festivals: Festival[] = tourism.festivals as Festival[];
 export const planYourTrip: PlanYourTrip = tourism.planYourTrip as PlanYourTrip;
 export const gallery: GalleryItem[] = tourism.gallery as GalleryItem[];
+export const photos: TourismPhoto[] = tourism.photos as TourismPhoto[];
+export const photosCheckedOn: string = tourism.photosCheckedOn;
+
+const photoById = new Map(photos.map((p) => [p.id, p]));
+
+/** The photo with this id, or undefined (so the slot falls back to its placeholder). */
+export function getPhoto(id: string | undefined): TourismPhoto | undefined {
+  return id ? photoById.get(id) : undefined;
+}
 
 /** Attractions that get a dedicated detail page, in feed order. */
 export const featuredAttractions: Attraction[] = attractions.filter((a) => a.featured);

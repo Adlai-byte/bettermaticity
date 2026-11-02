@@ -29,6 +29,7 @@ import type { LucideIcon } from 'lucide-react';
 import { Seo } from '@/components/Seo';
 import { AppLink } from '@/components/AppLink';
 import { ImageSlot } from '@/components/ImageSlot';
+import { PhotoCredit, PhotoSlot } from '@/components/PhotoSlot';
 import { Container } from '@/components/primitives';
 import { useLanguage } from '@/hooks/useLanguage';
 import {
@@ -52,6 +53,8 @@ import {
   plan,
   responsible,
   tourismOffice,
+  getPhoto,
+  photos,
   type Attraction,
   type Coast,
 } from '@/lib/tourismData';
@@ -95,6 +98,8 @@ const PLAN_ICONS: Record<string, LucideIcon> = {
   house: House,
 };
 
+const sambuokanPhoto = getPhoto(sambuokan.photo);
+
 const COAST_IMAGE_LABEL: Record<string, string> = {
   pacific: 'Drop a Pacific-side photo — Dahican surf',
   bay: 'Drop a bay-side photo — Pujada Island from a boat',
@@ -102,6 +107,7 @@ const COAST_IMAGE_LABEL: Record<string, string> = {
 
 function CoastCard({ coast }: { coast: Coast }) {
   const pacific = coast.key === 'pacific';
+  const photo = getPhoto(coast.photo);
   return (
     <m.div
       variants={fadeUp}
@@ -112,7 +118,12 @@ function CoastCard({ coast }: { coast: Coast }) {
       }
     >
       <div className="relative aspect-[16/9]">
-        <ImageSlot label={COAST_IMAGE_LABEL[coast.key]} src="" />
+        <PhotoSlot
+          photo={photo}
+          label={COAST_IMAGE_LABEL[coast.key]}
+          sizes="(min-width: 768px) 50vw, 100vw"
+          decorative
+        />
         <span
           className={
             pacific
@@ -171,16 +182,25 @@ function CoastCard({ coast }: { coast: Coast }) {
           {coast.linkLabel}
           <ArrowRight className="size-3.5" aria-hidden="true" />
         </a>
+        {photo ? (
+          <PhotoCredit photo={photo} className={pacific ? 'text-white/60' : 'text-ink-faint'} />
+        ) : null}
       </div>
     </m.div>
   );
 }
 
 function PlaceCard({ a }: { a: Attraction }) {
+  const photo = getPhoto(a.photo);
   const inner = (
     <>
       <div className="relative aspect-[4/3] bg-surface-subtle">
-        <ImageSlot label={a.imageLabel} src={a.image || undefined} />
+        <PhotoSlot
+          photo={photo}
+          label={a.imageLabel}
+          sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+          decorative
+        />
         <span className="absolute top-3 left-3 inline-flex h-[22px] items-center bg-white/95 px-2.5 text-[0.6875rem] font-bold text-heading">
           {a.filter}
         </span>
@@ -199,6 +219,7 @@ function PlaceCard({ a }: { a: Attraction }) {
             <Info className="size-3 shrink-0 text-royal" aria-hidden="true" />
             {a.note}
           </span>
+          {photo ? <PhotoCredit photo={photo} className="text-ink-faint" /> : null}
         </div>
       </div>
     </>
@@ -261,6 +282,7 @@ export default function VisitMati() {
           <div className="absolute inset-0 -z-20">
             <ImageSlot
               src="/assets/images/banners/visit-mati-bg.jpg"
+              eager
               alt=""
               label="Drop a wide hero photo — surfer on a Dahican wave"
             />
@@ -580,7 +602,17 @@ export default function VisitMati() {
                 variants={fadeUp}
                 className="relative aspect-[4/3] overflow-hidden rounded-card bg-[#f0b400] shadow-[0_18px_40px_rgba(18,60,122,0.22)]"
               >
-                <ImageSlot label={sambuokan.imageLabel} />
+                <PhotoSlot
+                  photo={sambuokanPhoto}
+                  label={sambuokan.imageLabel}
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                />
+                {sambuokanPhoto ? (
+                  <PhotoCredit
+                    photo={sambuokanPhoto}
+                    className="absolute right-2 bottom-2 bg-black/55 px-1.5 py-0.5 text-white"
+                  />
+                ) : null}
               </m.div>
             </m.div>
           </Container>
@@ -686,7 +718,88 @@ export default function VisitMati() {
             </m.div>
           </Container>
         </section>
+
+        {/* ── Photo credits ────────────────────────────────────────────────── */}
+        <PhotoCredits />
       </MotionConfig>
     </LazyMotion>
+  );
+}
+
+// Every photo on this page, with who published it, where, and on what terms. Cards carry
+// only the short credit; the links live here so a card that is itself a link stays valid.
+function PhotoCredits() {
+  const { t } = useLanguage();
+  return (
+    <section
+      id="photo-credits"
+      aria-labelledby="photo-credits-heading"
+      className="border-t border-line bg-surface-subtle py-12"
+    >
+      <Container>
+        <div className="max-w-[720px]">
+          <Eyebrow>{t('visit-photos-eyebrow')}</Eyebrow>
+          <h2
+            id="photo-credits-heading"
+            className="mt-2.5 font-display text-2xl font-extrabold tracking-[-0.03em] text-heading"
+          >
+            {t('visit-photos-title')}
+          </h2>
+          <p className="mt-2 text-sm leading-relaxed text-ink-muted">{t('visit-photos-lede')}</p>
+        </div>
+        <ul className="mt-6 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-2">
+          {photos.map((photo) => (
+            <li key={photo.id} className="flex gap-4 bg-white p-4">
+              <img
+                src={photo.srcSmall}
+                alt=""
+                width={96}
+                height={Math.round((96 * photo.height) / photo.width)}
+                loading="lazy"
+                decoding="async"
+                className="h-16 w-24 shrink-0 object-cover"
+              />
+              <div className="min-w-0 text-[0.8125rem] leading-snug">
+                <p className="text-heading">{photo.alt}</p>
+                <p className="mt-1 font-semibold text-heading">
+                  <PhotoCredit photo={photo} className="text-[0.8125rem]" />
+                  {photo.licenseUrl ? (
+                    <>
+                      {' · '}
+                      <a
+                        href={photo.licenseUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-normal text-royal hover:underline"
+                      >
+                        {t('visit-photos-license')}
+                      </a>
+                    </>
+                  ) : null}
+                </p>
+                <ul className="mt-1 space-y-0.5">
+                  {photo.sources.map((s) => (
+                    <li key={s.url}>
+                      <a
+                        href={s.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-royal hover:underline"
+                      >
+                        {s.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+                {photo.note ? <p className="mt-1 text-ink-muted">{photo.note}</p> : null}
+              </div>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-4 max-w-[860px] text-xs leading-relaxed text-ink-muted">
+          {t('visit-photos-terms')}
+        </p>
+      </Container>
+    </section>
   );
 }

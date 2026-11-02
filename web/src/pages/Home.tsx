@@ -21,6 +21,8 @@ import { Seo } from '@/components/Seo';
 import { AppLink } from '@/components/AppLink';
 import { ServiceSearch } from '@/components/ServiceSearch';
 import { ImageSlot } from '@/components/ImageSlot';
+import { PhotoCredit, PhotoSlot } from '@/components/PhotoSlot';
+import { getPhoto } from '@/lib/tourismData';
 import {
   Container,
   Eyebrow,
@@ -83,12 +85,21 @@ const popular: { to: string; Icon: LucideIcon; label: string; color: string; fee
   { to: '/visit-mati', Icon: Waves, label: 'Tourism', color: '#8a6200', feel: true },
 ];
 
-const tourism: { title: string; blurb: string; slot: string; badge?: string; large?: boolean }[] = [
+const tourism: {
+  title: string;
+  blurb: string;
+  slot: string;
+  /** Id of a photo in data/tourism.json's `photos`. */
+  photo: string;
+  badge?: string;
+  large?: boolean;
+}[] = [
   {
     title: 'Dahican Beach',
     blurb:
       'Seven kilometres of white sand on the Pacific side. Skimboarders at sunrise, surf through the amihan season, and sea-turtle nesting grounds watched by the Amihan sa Dahican volunteers.',
     slot: 'Drop a Dahican Beach photo — skimboarder at sunrise',
+    photo: 'dahican-aerial',
     badge: 'Surf & skimboard',
     large: true,
   },
@@ -97,11 +108,13 @@ const tourism: { title: string; blurb: string; slot: string; badge?: string; lar
     blurb:
       'A protected seascape of coral reefs, dugongs and dolphins — with island hopping out to Pujada Island.',
     slot: 'Drop a Pujada Bay photo',
+    photo: 'pujada-bay-view',
   },
   {
     title: 'Sleeping Dinosaur',
     blurb: 'The ridge across the bay, best watched from the Baywalk and Boulevard at golden hour.',
     slot: 'Drop a Sleeping Dinosaur / Baywalk photo',
+    photo: 'sleeping-dinosaur-aerial',
   },
 ];
 
@@ -453,32 +466,46 @@ export default function Home() {
               whileInView="show"
               viewport={revealViewport}
             >
-              {tourism.map((tp) => (
-                <m.article
-                  key={tp.title}
-                  variants={fadeUp}
-                  className="flex flex-col overflow-hidden rounded-card border border-line bg-white text-ink"
-                >
-                  <div className={tp.large ? 'h-56' : 'h-48'}>
-                    <ImageSlot label={tp.slot} className="border-0 border-b" />
-                  </div>
-                  <div className="grid gap-1.5 p-5">
-                    {tp.badge ? (
-                      <span className="w-fit rounded-btn bg-amber px-2 py-0.5 font-mono text-[0.65625rem] font-semibold tracking-[0.1em] text-navy uppercase">
-                        {tp.badge}
-                      </span>
-                    ) : null}
-                    <h3
-                      className={`font-display font-extrabold tracking-[-0.02em] text-heading ${
-                        tp.large ? 'text-xl' : 'text-[1.0625rem]'
-                      }`}
-                    >
-                      {tp.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-ink-muted">{tp.blurb}</p>
-                  </div>
-                </m.article>
-              ))}
+              {tourism.map((tp) => {
+                const photo = getPhoto(tp.photo);
+                return (
+                  <m.article
+                    key={tp.title}
+                    variants={fadeUp}
+                    className="flex flex-col overflow-hidden rounded-card border border-line bg-white text-ink"
+                  >
+                    <div className={tp.large ? 'h-56' : 'h-48'}>
+                      <PhotoSlot
+                        photo={photo}
+                        label={tp.slot}
+                        sizes={
+                          tp.large
+                            ? '(min-width: 1024px) 45vw, 100vw'
+                            : '(min-width: 1024px) 28vw, 100vw'
+                        }
+                        decorative
+                        className="border-0 border-b"
+                      />
+                    </div>
+                    <div className="grid gap-1.5 p-5">
+                      {tp.badge ? (
+                        <span className="w-fit rounded-btn bg-amber px-2 py-0.5 font-mono text-[0.65625rem] font-semibold tracking-[0.1em] text-navy uppercase">
+                          {tp.badge}
+                        </span>
+                      ) : null}
+                      <h3
+                        className={`font-display font-extrabold tracking-[-0.02em] text-heading ${
+                          tp.large ? 'text-xl' : 'text-[1.0625rem]'
+                        }`}
+                      >
+                        {tp.title}
+                      </h3>
+                      <p className="text-sm leading-relaxed text-ink-muted">{tp.blurb}</p>
+                      {photo ? <PhotoCredit photo={photo} className="mt-1 text-ink-faint" /> : null}
+                    </div>
+                  </m.article>
+                );
+              })}
             </m.div>
 
             <m.div

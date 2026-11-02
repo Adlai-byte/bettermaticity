@@ -1846,5 +1846,13 @@
   "attraction-not-found": "Attraction not found.",
   "visit-places-to-go": "Places to go",
   "visit-when-to-come": "When to come",
-  "visit-plan-your-trip": "Plan your trip"
+  "visit-plan-your-trip": "Plan your trip",
+  "photo-credit": "Photo: {{by}}",
+  "photo-credit-license": "Photo: {{by}}, {{license}}",
+  "photo-source": "Source",
+  "visit-photos-eyebrow": "Photo credits",
+  "visit-photos-title": "Where these photos come from",
+  "visit-photos-lede": "Who published each photo of a place on this page, and where. Places without a sourced photo show a placeholder until one is found.",
+  "visit-photos-license": "License",
+  "visit-photos-terms": "Photos from the City Government of Mati, its City Tourism Office and the Philippine Carabao Center were published on those offices’ own websites and are credited to them. Philippine law gives works of the government no copyright (Republic Act 8293, Section 176), though using them for profit needs the agency’s approval; BetterMati is non-profit. City photos are cited through Internet Archive copies because the City’s website currently loads unrelated outside content. Photos from Wikimedia Commons are used under the Creative Commons license shown. If you took one of these photos and want it credited differently or removed, email volunteer@bettermati.org."
 }

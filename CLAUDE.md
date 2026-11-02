@@ -72,6 +72,8 @@ To change displayed content, edit the JSON — not the components. Feeds: `servi
 
 The project map (`components/ProjectMap.tsx`, on `/transparency/projects` and Home) reads `awarded-civil-works.json` (the City's FDP Bid Results on Civil Works) plus notices and major projects, and draws barangays from `web/src/lib/barangayPaths.json`. That file is generated from `data/mati/dist/mati_barangays.geojson` by `node web/scripts/build-barangay-paths.mjs`; rerun it whenever the boundary file changes (a test fails if they drift).
 
+Visit Mati photos are listed in `tourism.json`'s `photos` (self-hosted WebP under `assets/images/visit/`, a large and an 800 px `-sm` version) and referenced by id from attractions, coasts, Sambuokan and Home's tourism cards. Each one credits who published it, with its source; full citations are on `/visit-mati#photo-credits`. `tourismPhotos.test.ts` enforces the rules: a photo without a Creative Commons license must come from a `.gov.ph` source, and anything from mati.gov.ph must be cited through `web.archive.org`. Don't add a photo whose publisher you can't name.
+
 The one exception is **`news.json`**, fetched at runtime from `/data/news.json` by `useNews` so news can be updated without a rebuild (the `admin/` news editor writes it).
 
 `data/` is copied wholesale into `dist/data/` by `build.sh`, and the dev server is configured with `fs.allow: ['..']` so the root `data/` is importable during `npm run dev`.

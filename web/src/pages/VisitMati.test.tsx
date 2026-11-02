@@ -17,7 +17,10 @@ import {
   planYourTrip,
   gallery,
   getAttraction,
+  getPhoto,
+  photos,
 } from '@/lib/tourismData';
+import DahicanBeach from './visit-mati/DahicanBeach';
 
 const routes = new Set(migratedRoutes as string[]);
 
@@ -53,8 +56,10 @@ describe('Visit Mati hub page', () => {
 
   it('links each featured attraction to its detail route', () => {
     renderPage();
+    // The directory only: photo credits further down also mention places by name.
+    const places = within(document.getElementById('places')!);
     for (const a of featuredAttractions) {
-      const link = screen.getByRole('link', { name: new RegExp(a.name) });
+      const link = places.getByRole('link', { name: new RegExp(a.name) });
       expect(link).toHaveAttribute('href', `/visit-mati/${a.slug}`);
     }
   });
@@ -77,11 +82,45 @@ describe('Visit Mati hub page', () => {
     }
   });
 
+  it('credits every photo with its source, and each card names its photo’s publisher', () => {
+    renderPage();
+    const section = screen
+      .getByRole('heading', { name: /Where these photos come from/i })
+      .closest('section')!;
+    for (const p of photos) {
+      for (const s of p.sources) {
+        // Two photos can come from the same article, so a source may be listed twice.
+        const links = within(section).getAllByRole('link', { name: s.title });
+        expect(links.every((l) => l.getAttribute('href') === s.url)).toBe(true);
+      }
+    }
+    const places = within(document.getElementById('places')!);
+    const dahican = places.getByRole('link', { name: /Dahican Beach/ });
+    expect(dahican).toHaveTextContent('Photo: City Government of Mati');
+  });
+
   it('renders the travel-responsibly guidance', () => {
     renderPage();
     const heading = screen.getByRole('heading', { name: /Travel responsibly/i });
     const card = heading.closest('div')!;
     expect(within(card).getAllByRole('listitem').length).toBeGreaterThan(0);
+  });
+});
+
+describe('attraction detail page', () => {
+  it('shows the attraction’s photo with its credit and a link to the source', () => {
+    const { container } = render(
+      <MemoryRouter>
+        <DahicanBeach />
+      </MemoryRouter>
+    );
+    const photo = getPhoto(getAttraction('dahican-beach')!.photo)!;
+    expect(container.querySelector(`img[src="${photo.src}"]`)).toHaveAttribute('alt', photo.alt);
+    expect(screen.getByText('Photo: City Government of Mati')).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /Source/ })).toHaveAttribute(
+      'href',
+      photo.sources[0].url
+    );
   });
 });
 

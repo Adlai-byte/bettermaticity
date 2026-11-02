@@ -1,6 +1,166 @@
 {
   "_status": "draft",
-  "_note": "Placeholder tourism content for the Visit Mati page. Copy and photos await verified City of Mati / tourism-office data. Specific figures in [brackets] are TODO placeholders — do not treat as verified. The 'conditions' and 'seasons' blocks are indicative sample data for layout only.",
+  "_note": "Placeholder tourism copy for the Visit Mati page; text awaits verified City of Mati / tourism-office data. Specific figures in [brackets] are TODO placeholders — do not treat as verified. The 'conditions' and 'seasons' blocks are indicative sample data for layout only. Photos ('photos') are sourced: each names who published it and where, with City photos cited from Internet Archive copies.",
+  "photosCheckedOn": "2026-11-02",
+  "photos": [
+    {
+      "id": "dahican-aerial",
+      "src": "/assets/images/visit/dahican-aerial.webp",
+      "srcSmall": "/assets/images/visit/dahican-aerial-sm.webp",
+      "width": 1600,
+      "height": 1188,
+      "alt": "Dahican Beach from the air: a long curve of white sand and turquoise surf, with forested mountains behind.",
+      "by": "City Government of Mati",
+      "sources": [
+        {
+          "title": "“Mati’s Summer Fun activities a go”, City of Mati website, 26 February 2020 (archived copy)",
+          "url": "https://web.archive.org/web/20200229051916/http://www.mati.gov.ph/make-it-mati-maganahay-ngadi/2020/02/26/matis-summer-fun-activities-a-go/"
+        }
+      ],
+      "file": "https://web.archive.org/web/20220802031819/https://www.mati.gov.ph/make-it-mati-maganahay-ngadi/wp-content/uploads/2019/10/dahican-beach.jpg"
+    },
+    {
+      "id": "dahican-shore",
+      "src": "/assets/images/visit/dahican-shore.webp",
+      "srcSmall": "/assets/images/visit/dahican-shore-sm.webp",
+      "width": 1600,
+      "height": 1067,
+      "alt": "Dahican Beach from the air: white sand and clear turquoise water along the shore.",
+      "by": "City Government of Mati",
+      "sources": [
+        {
+          "title": "“Mati beaches, other attractions, now open”, City of Mati website, 11 June 2020 (archived copy)",
+          "url": "https://web.archive.org/web/20220120081345/http://www.mati.gov.ph/make-it-mati-maganahay-ngadi/2020/06/11/mati-beaches-other-attractions-now-open/"
+        }
+      ],
+      "file": "https://web.archive.org/web/20220717020348/http://www.mati.gov.ph/make-it-mati-maganahay-ngadi/wp-content/uploads/2020/06/dji_0620-15763387719172769379-scaled.jpg",
+      "note": "The City’s article opens with this photo and the line “Dahican Beach … is now open to the public.”"
+    },
+    {
+      "id": "pujada-bay-view",
+      "src": "/assets/images/visit/pujada-bay-view.webp",
+      "srcSmall": "/assets/images/visit/pujada-bay-view-sm.webp",
+      "width": 1600,
+      "height": 759,
+      "alt": "Pujada Bay from a hillside: calm water, a small wooded islet near the shore and headlands beyond.",
+      "by": "City Government of Mati",
+      "sources": [
+        {
+          "title": "“Not 1 but 3 City of Mati bays officially accepted on the Most Beautiful Bays in the World roster”, City of Mati website, 21 February 2020 (archived copy)",
+          "url": "https://web.archive.org/web/20220808103857/http://www.mati.gov.ph/make-it-mati-maganahay-ngadi/2020/02/21/not-1-but-3-city-of-mati-bays-officially-accepted-in-the-most-beautiful-bays-in-the-world-roster/"
+        }
+      ],
+      "file": "https://web.archive.org/web/20220802031824/https://www.mati.gov.ph/make-it-mati-maganahay-ngadi/wp-content/uploads/2020/02/img_1925.jpg",
+      "note": "The City’s article doesn’t name the bay in this photo; the view matches other photos of Pujada Bay taken from the same hillside."
+    },
+    {
+      "id": "sleeping-dinosaur-aerial",
+      "src": "/assets/images/visit/sleeping-dinosaur-aerial.webp",
+      "srcSmall": "/assets/images/visit/sleeping-dinosaur-aerial-sm.webp",
+      "width": 1600,
+      "height": 1067,
+      "alt": "The Sleeping Dinosaur headland from the air in evening light: green ridges running out into Pujada Bay, with an island on the horizon.",
+      "by": "City Tourism Office, City of Mati",
+      "sources": [
+        {
+          "title": "City Tourism Office website, tourism.mati.gov.ph (archived copy, 13 April 2024)",
+          "url": "https://web.archive.org/web/20240413122356/https://tourism.mati.gov.ph/"
+        },
+        {
+          "title": "The same photo on the City of Mati website, filed as “SLEEPING-DINO” (archived copy)",
+          "url": "https://web.archive.org/web/20230812103656/https://www.mati.gov.ph/make-it-mati-maganahay-ngadi/wp-content/uploads/2023/01/SLEEPING-DINO-1024x683.jpg"
+        }
+      ],
+      "file": "https://web.archive.org/web/20240814045334/https://tourism.mati.gov.ph/wp-content/uploads/2023/12/DJI_0812-scaled.jpg"
+    },
+    {
+      "id": "baywalk-i-love-mati",
+      "src": "/assets/images/visit/baywalk-i-love-mati.webp",
+      "srcSmall": "/assets/images/visit/baywalk-i-love-mati-sm.webp",
+      "width": 1600,
+      "height": 1067,
+      "alt": "The “I ♥ Mati” sign on the Baywalk, with the bay and mountains behind.",
+      "by": "City Government of Mati",
+      "sources": [
+        {
+          "title": "“Mati beaches, other attractions, now open”, City of Mati website, 11 June 2020 (archived copy)",
+          "url": "https://web.archive.org/web/20220120081345/http://www.mati.gov.ph/make-it-mati-maganahay-ngadi/2020/06/11/mati-beaches-other-attractions-now-open/"
+        }
+      ],
+      "file": "https://web.archive.org/web/20220717020409/http://www.mati.gov.ph/make-it-mati-maganahay-ngadi/wp-content/uploads/2020/06/baywalk269554354237423676-scaled.jpg"
+    },
+    {
+      "id": "sambuokan-carabao-parade",
+      "src": "/assets/images/visit/sambuokan-carabao-parade.webp",
+      "srcSmall": "/assets/images/visit/sambuokan-carabao-parade-sm.webp",
+      "width": 1600,
+      "height": 1067,
+      "alt": "A farmer leads a carabao pulling a float decked with produce and palm leaves, in a street parade during the Sambuokan Festival.",
+      "by": "Philippine Carabao Center",
+      "sources": [
+        {
+          "title": "“Carabao parade enlivens festival in Mati City”, Philippine Carabao Center",
+          "url": "https://www.pcc.gov.ph/carabao-parade-enlivens-festival-in-mati-city/"
+        }
+      ],
+      "file": "https://www.pcc.gov.ph/wp-content/uploads/2023/11/397196782_730786999079501_7082478344500338860_n.jpg"
+    },
+    {
+      "id": "hamiguitan-peak",
+      "src": "/assets/images/visit/hamiguitan-peak.webp",
+      "srcSmall": "/assets/images/visit/hamiguitan-peak-sm.webp",
+      "width": 1600,
+      "height": 1200,
+      "alt": "The forested slopes and summit of Mount Hamiguitan under a clear sky.",
+      "by": "Kleomarlo",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "sources": [
+        {
+          "title": "Mount Hamiguitan peak.JPG, Wikimedia Commons",
+          "url": "https://commons.wikimedia.org/wiki/File:Mount_Hamiguitan_peak.JPG"
+        }
+      ]
+    },
+    {
+      "id": "subangan-whale",
+      "src": "/assets/images/visit/subangan-whale.webp",
+      "srcSmall": "/assets/images/visit/subangan-whale-sm.webp",
+      "width": 1208,
+      "height": 800,
+      "alt": "The skeleton of a sperm whale on display in the main hall of the Subangan Museum.",
+      "by": "Way PH",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sources": [
+        {
+          "title": "Subangan Museum in Mati City, Davao Oriental, Wikimedia Commons",
+          "url": "https://commons.wikimedia.org/wiki/File:Subangan_Museum_in_Mati_City,_Davao_Oriental_(15914898537).jpg"
+        },
+        {
+          "title": "Way PH’s Mati travel guide, which the photographer asks users to link",
+          "url": "http://www.wayph.com/mati-city-tourist-spots-and-travel-guide/"
+        }
+      ]
+    },
+    {
+      "id": "pujada-bay-panorama",
+      "src": "/assets/images/visit/pujada-bay-panorama.webp",
+      "srcSmall": "/assets/images/visit/pujada-bay-panorama-sm.webp",
+      "width": 1600,
+      "height": 583,
+      "alt": "Panorama of Pujada Bay and the Sleeping Dinosaur from the hills above the bay.",
+      "by": "Michael E. Peligro",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sources": [
+        {
+          "title": "View of Sleeping Dinosaur Island, Mati, Davao Oriental, Wikimedia Commons",
+          "url": "https://commons.wikimedia.org/wiki/File:View_of_sleeping_dinosaur_island_mati_davao_oriental.jpg"
+        }
+      ]
+    }
+  ],
   "intro": "Mati sits where the Pacific meets Mindanao — a coastline of skimboard breaks and sea-turtle sands, a bay of coral and dugongs, and a mountain range the world protects. Come feel it.",
   "hero": {
     "tagline": "Two coasts.",
@@ -13,9 +173,18 @@
     "status": "Good for skimboarding",
     "open": true,
     "metrics": [
-      { "label": "Waves", "value": "1.2 m" },
-      { "label": "Wind", "value": "NE 14" },
-      { "label": "Sunrise", "value": "5:38" }
+      {
+        "label": "Waves",
+        "value": "1.2 m"
+      },
+      {
+        "label": "Wind",
+        "value": "NE 14"
+      },
+      {
+        "label": "Sunrise",
+        "value": "5:38"
+      }
     ],
     "source": "PAGASA · sample data",
     "updated": "Updated 9:30 AM"
@@ -27,7 +196,8 @@
       "title": "Surf, skim & sea turtles",
       "blurb": "Dahican's seven-kilometre crescent is where Mati earned its name as the skimboarding capital of the Philippines.",
       "tags": ["Skimboarding", "Surf lessons", "Turtle conservation", "Mangrove boardwalk"],
-      "linkLabel": "Explore the Pacific side"
+      "linkLabel": "Explore the Pacific side",
+      "photo": "dahican-shore"
     },
     {
       "key": "bay",
@@ -35,7 +205,8 @@
       "title": "Islands, reefs & sunsets",
       "blurb": "Pujada Bay is a protected seascape — calm water, coral gardens, and island hops you can do in a morning.",
       "tags": ["Island hopping", "Snorkelling", "Sleeping Dinosaur view", "Baywalk food stalls"],
-      "linkLabel": "Explore the bay side"
+      "linkLabel": "Explore the bay side",
+      "photo": "pujada-bay-panorama"
     }
   ],
   "attractions": [
@@ -51,7 +222,7 @@
       "where": "Barangay Dahican · Pacific coast",
       "note": "Open daily · best at sunrise",
       "imageLabel": "Drop a Dahican Beach photo — skimboarder at sunrise",
-      "image": "",
+      "photo": "dahican-aerial",
       "featured": true,
       "highlights": [
         "Sunrise skimboarding and longboard surf",
@@ -72,7 +243,10 @@
           "body": "[Placeholder] Dahican is a short ride from the Mati city centre. Add verified directions, tricycle/habal-habal fares, and travel time from the public terminal."
         }
       ],
-      "coords": { "lat": 6.9167, "lng": 126.2833 },
+      "coords": {
+        "lat": 6.9167,
+        "lng": 126.2833
+      },
       "_status": "draft"
     },
     {
@@ -87,7 +261,7 @@
       "where": "South of Mati · San Isidro / Governor Generoso side",
       "note": "Permit & accredited guide required",
       "imageLabel": "Drop a Mount Hamiguitan photo — pygmy forest / ridge",
-      "image": "",
+      "photo": "hamiguitan-peak",
       "featured": true,
       "highlights": [
         "UNESCO World Heritage Site",
@@ -108,7 +282,10 @@
           "body": "[Placeholder] Hamiguitan straddles municipalities south of Mati. Add verified jump-off points, travel time, and transport."
         }
       ],
-      "coords": { "lat": 6.7167, "lng": 126.1833 },
+      "coords": {
+        "lat": 6.7167,
+        "lng": 126.1833
+      },
       "_status": "draft"
     },
     {
@@ -123,7 +300,7 @@
       "where": "Pujada Bay · west of the city",
       "note": "Hire an accredited boat operator",
       "imageLabel": "Drop a Pujada Bay photo — island hopping / clear water",
-      "image": "",
+      "photo": "pujada-bay-view",
       "featured": true,
       "highlights": [
         "Protected marine seascape",
@@ -144,7 +321,10 @@
           "body": "[Placeholder] Add verified boat-hire arrangements, launch points, rates, and typical trip durations."
         }
       ],
-      "coords": { "lat": 6.8667, "lng": 126.25 },
+      "coords": {
+        "lat": 6.8667,
+        "lng": 126.25
+      },
       "_status": "draft"
     },
     {
@@ -158,7 +338,7 @@
       "where": "Best from the Baywalk & City Boulevard",
       "note": "Golden hour · free",
       "imageLabel": "Drop a Sleeping Dinosaur / Baywalk photo at golden hour",
-      "image": "",
+      "photo": "sleeping-dinosaur-aerial",
       "featured": true,
       "highlights": [
         "Mati's signature silhouette",
@@ -175,7 +355,10 @@
           "body": "Walk the Baywalk, grab something to eat along the Boulevard, and stay for sunset. It pairs naturally with a Pujada Bay trip."
         }
       ],
-      "coords": { "lat": 6.9481, "lng": 126.2286 },
+      "coords": {
+        "lat": 6.9481,
+        "lng": 126.2286
+      },
       "_status": "draft"
     },
     {
@@ -189,7 +372,7 @@
       "where": "City proper, near City Hall",
       "note": "[Hours & fees to verify]",
       "imageLabel": "Drop a Subangan Museum photo — gallery / whale skeleton",
-      "image": "",
+      "photo": "subangan-whale",
       "featured": true,
       "highlights": [
         "Natural-history and cultural galleries",
@@ -206,7 +389,10 @@
           "body": "[Placeholder] Add verified opening hours, entrance fees, and location within the city."
         }
       ],
-      "coords": { "lat": 6.9489, "lng": 126.2181 },
+      "coords": {
+        "lat": 6.9489,
+        "lng": 126.2181
+      },
       "_status": "draft"
     },
     {
@@ -220,7 +406,7 @@
       "where": "Mati city proper",
       "note": "Open daily · free",
       "imageLabel": "Drop a City Boulevard / Baywalk photo at sunset",
-      "image": "",
+      "photo": "baywalk-i-love-mati",
       "featured": false,
       "highlights": [],
       "sections": [],
@@ -237,7 +423,6 @@
       "where": "Barangay Dahican",
       "note": "[Hours & fees to verify]",
       "imageLabel": "Drop a Guang-guang mangrove boardwalk photo",
-      "image": "",
       "featured": false,
       "highlights": [],
       "sections": [],
@@ -254,7 +439,6 @@
       "where": "North of the city",
       "note": "Boat hire required",
       "imageLabel": "Drop a Mayo Bay photo — calm water / boats",
-      "image": "",
       "featured": false,
       "highlights": [],
       "sections": [],
@@ -302,7 +486,8 @@
     "when": "Every October",
     "title": "Sambuokan Festival",
     "blurb": "The city's founding celebration. “Sambuok” means to gather as one — street dancing, the barangay showdown, and the whole city out on the Boulevard.",
-    "imageLabel": "Drop a Sambuokan street-dance photo"
+    "imageLabel": "Drop a Sambuokan street-dance photo",
+    "photo": "sambuokan-carabao-parade"
   },
   "festivals": [
     {
@@ -372,11 +557,29 @@
     ]
   },
   "gallery": [
-    { "imageLabel": "Dahican sunrise skimboarding", "image": "" },
-    { "imageLabel": "Pujada Bay island hopping", "image": "" },
-    { "imageLabel": "Mount Hamiguitan pygmy forest", "image": "" },
-    { "imageLabel": "Sleeping Dinosaur at golden hour", "image": "" },
-    { "imageLabel": "Sambuokan Festival street dancing", "image": "" },
-    { "imageLabel": "Sea-turtle release at Dahican", "image": "" }
+    {
+      "imageLabel": "Dahican sunrise skimboarding",
+      "image": ""
+    },
+    {
+      "imageLabel": "Pujada Bay island hopping",
+      "image": ""
+    },
+    {
+      "imageLabel": "Mount Hamiguitan pygmy forest",
+      "image": ""
+    },
+    {
+      "imageLabel": "Sleeping Dinosaur at golden hour",
+      "image": ""
+    },
+    {
+      "imageLabel": "Sambuokan Festival street dancing",
+      "image": ""
+    },
+    {
+      "imageLabel": "Sea-turtle release at Dahican",
+      "image": ""
+    }
   ]
 }

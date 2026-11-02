@@ -1,10 +1,10 @@
-import { ArrowLeft, ArrowRight, Check, MapPin } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ArrowUpRight, Check, MapPin } from 'lucide-react';
 import { Seo } from '@/components/Seo';
 import { AppLink } from '@/components/AppLink';
-import { ImageSlot } from '@/components/ImageSlot';
+import { PhotoCredit, PhotoSlot } from '@/components/PhotoSlot';
 import { Container, Section } from '@/components/primitives';
 import { useLanguage } from '@/hooks/useLanguage';
-import { getAttraction } from '@/lib/tourismData';
+import { getAttraction, getPhoto } from '@/lib/tourismData';
 
 // OpenStreetMap embed centred on the attraction (same approach as Home's map).
 function osmEmbed(lat: number, lng: number): string {
@@ -21,6 +21,7 @@ function osmEmbed(lat: number, lng: number): string {
 export function AttractionDetail({ slug }: { slug: string }) {
   const { t } = useLanguage();
   const a = getAttraction(slug);
+  const photo = getPhoto(a?.photo);
 
   if (!a) {
     return (
@@ -47,7 +48,7 @@ export function AttractionDetail({ slug }: { slug: string }) {
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <section className="relative isolate flex min-h-[52vh] flex-col justify-end overflow-hidden bg-navy text-white">
         <div className="absolute inset-0 -z-10">
-          <ImageSlot label={a.imageLabel} src={a.image || undefined} />
+          <PhotoSlot photo={photo} label={a.imageLabel} sizes="100vw" eager />
         </div>
         <div
           className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(18,60,122,0.35)_0%,rgba(18,60,122,0.5)_45%,rgba(18,60,122,0.95)_100%)]"
@@ -66,6 +67,21 @@ export function AttractionDetail({ slug }: { slug: string }) {
               {a.name}
             </h1>
             <p className="mt-3 max-w-[52ch] text-lg leading-relaxed text-white/85">{a.tagline}</p>
+            {photo ? (
+              <p className="mt-6 flex flex-wrap items-center gap-x-2 text-white/70">
+                <PhotoCredit photo={photo} className="text-xs" />
+                <a
+                  href={photo.sources[0].url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-0.5 text-xs text-white/80 underline-offset-2 hover:text-white hover:underline"
+                >
+                  {t('photo-source')}
+                  <ArrowUpRight className="size-3" aria-hidden="true" />
+                  <span className="sr-only"> ({t('service-new-tab')})</span>
+                </a>
+              </p>
+            ) : null}
           </div>
         </Container>
       </section>

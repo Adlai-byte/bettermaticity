@@ -22,7 +22,7 @@ import { projectsCheckedOn, risingProjects } from '@/lib/risingProjects';
 import awardedWorks from '@data/awarded-civil-works.json';
 import { services } from '@/lib/services';
 import { serviceGuides, serviceReferences, serviceReviewDate } from '@/lib/serviceReferences';
-import { attractions } from '@/lib/tourismData';
+import { attractions, photos, photosCheckedOn } from '@/lib/tourismData';
 import {
   documentsCheckedOn,
   fdpCheckedOn,
@@ -422,14 +422,15 @@ export const sourceGroups: DatasetGroup[] = [
         count: attractions.length,
         unit: 'places',
         summary: 'Attractions, festivals and practical notes on the Visit Mati pages.',
-        coverage:
-          'Placeholder content. Directions, fees, permits, opening hours and photos still need the City Tourism Office’s information.',
-        publisher: 'Not yet sourced',
+        coverage: `Placeholder text: directions, fees, permits and opening hours still need the City Tourism Office’s information. The ${photos.length} photos are sourced and credited one by one: the City’s own (cited through Internet Archive copies), one from the Philippine Carabao Center, and Creative Commons photos from Wikimedia Commons.`,
+        publisher: 'Text not yet sourced; photos credited individually',
         period: '—',
-        checkedOn: null,
+        checkedOn: photosCheckedOn,
         status: 'draft',
-        page: { to: '/visit-mati', label: 'Visit Mati' },
-        sources: [],
+        page: { to: '/visit-mati#photo-credits', label: 'Visit Mati photo credits' },
+        sources: unique(
+          photos.map((ph) => ({ label: ph.sources[0].title, url: ph.sources[0].url }))
+        ),
         confirmWith: 'City Tourism Office',
       },
     ],

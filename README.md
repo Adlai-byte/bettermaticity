@@ -10,7 +10,7 @@ A civic-tech portal that gives the people of Mati, Davao Oriental, Philippines p
 > - **Barangays** — the 26 barangays and their populations are verified (`data/mati/`); barangay captains and contacts are not.
 > - **Legislation** — `data/ordinances.json` and `data/resolutions.json` list titles only; full texts are pending.
 > - **Office contacts** — City Hall and office phone numbers and emails need confirmation from the City. (Emergency hotlines in `data/emergency-hotlines.json` are transcribed from the City DRRMO's official graphic.)
-> - **Tourism** — some attraction details in `data/tourism.json` are placeholders.
+> - **Tourism** — some attraction details in `data/tourism.json` are placeholders. Photos are sourced and credited (City of Mati, Philippine Carabao Center, Wikimedia Commons); Mayo Bay and the Guang-guang mangroves still have none.
 > - **Audit reports** — COA Annual Audit Reports are not yet collected (Full Disclosure reports are).
 > - **Config** — the Google Analytics ID is a placeholder; set your GA4 property.
 > - **Cebuano (`ceb`)** — `web/src/locales/ceb.json` is a partial, machine-assisted set; missing strings fall back to English pending translation and native review.
