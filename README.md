@@ -2,20 +2,16 @@
 
 A civic-tech portal that gives the people of Mati, Davao Oriental, Philippines plain-language access to their City Government's services, officials, legislation and public funds.
 
-> ### ⚠️ Records still waiting on verified City of Mati data
+> ### ⚠️ Data verification and draft records
 >
-> BetterMati.org started from a template built for LGU Solano and has been rebranded to the City of Mati: name, domain, geography (`PH-DAO`), terminology (City / Sangguniang Panlungsod) and artwork. Much of the content is now sourced and checked (see [Data sources](https://bettermati.org/transparency/sources)), but these records are still **clearly-marked placeholders** (`[Placeholder]`, `[TODO]` or `_status: "draft"`) until the City confirms them:
+> BetterMati.org started from a template built for LGU Solano and has been rebranded to the City of Mati: name, domain, geography (`PH-DAO`), terminology (City / Sangguniang Panlungsod) and artwork.
 >
-> - **Officials' photos and office contacts** — names come from mati.gov.ph (`data/officials.json`). The City publishes only the Mayor's portrait and an unlabelled council group photo (both used, self-hosted in `assets/images/officials/`); individual photos of the Vice Mayor and councilors, and office contacts, are not published.
-> - **Barangays** — the 26 barangays and their populations are verified (`data/mati/`); barangay captains and contacts are not.
-> - **Legislation** — `data/ordinances.json` and `data/resolutions.json` list titles only; full texts are pending.
-> - **Office contacts** — City Hall and office phone numbers and emails need confirmation from the City. (Emergency hotlines in `data/emergency-hotlines.json` are transcribed from the City DRRMO's official graphic.)
-> - **Tourism** — some attraction details in `data/tourism.json` are placeholders. Photos are sourced and credited (City of Mati, Philippine Carabao Center, Wikimedia Commons); Mayo Bay and the Guang-guang mangroves still have none.
-> - **Audit reports** — COA Annual Audit Reports are not yet collected (Full Disclosure reports are).
-> - **Config** — the Google Analytics ID is a placeholder; set your GA4 property.
-> - **Cebuano (`ceb`)** — `web/src/locales/ceb.json` is a partial, machine-assisted set; missing strings fall back to English pending translation and native review.
+> Core datasets are verified against official government portals:
 >
-> Verified facts are tracked as BM-001. Don't "correct" them from general knowledge.
+> - **Verified & sourced** — emergency hotlines (`data/emergency-hotlines.json`), City finances (DBM & BLGF FY2021–FY2025), procurement notices and awarded civil works (PhilGEPS & BAC), the 26 barangays and 2024 census population (PSA POPCEN), elected officials' names, official portraits (Mayor and inaugural council group photo in `assets/images/officials/`), sourced attraction photos, and official links are sourced and checked against primary sources.
+> - **Drafts & placeholders** — individual photos and office contacts for the Vice Mayor and councilors, department phone/email contacts, full texts of ordinances and resolutions (titles only currently), and tourism attraction details (with Mayo Bay and Guang-guang mangroves photos still pending) remain drafts (`_status: "draft"` or `[Placeholder]`) pending City Hall publication or confirmation.
+>
+> The authoritative, up-to-date status of every dataset is maintained on the live **[Data sources](https://bettermati.org/transparency/sources)** registry (`/transparency/sources`). Verified facts are tracked as BM-001; do not "correct" them from general knowledge.
 
 ![Version](https://img.shields.io/github/package-json/v/kaarlosasiang/bettermaticity)
 ![License](https://img.shields.io/badge/license-MIT%20%7C%20CC%20BY%204.0-blue)
@@ -88,7 +84,7 @@ The site is a single **React + TypeScript** application built with **Vite** and 
 | **Emergency Hotlines**  | Always-visible hotline bar; a scrolling marquee on tablet and mobile that pauses on hover and focus                                |
 | **Changelog**           | Plain-language release notes at [/changelog](https://bettermati.org/changelog), linked from the footer version                     |
 | **Progressive Web App** | Installable, with seamless updates, versioned service-worker caching and an offline page                                           |
-| **Languages**           | English and Cebuano (Cebuano strings not yet translated fall back to English)                                                      |
+| **Languages**           | English and Cebuano (100% translated; draft awaiting native-speaker review)                                                        |
 | **Accessibility**       | Skip links, ARIA labels, keyboard navigation, semantic HTML, reduced motion                                                        |
 | **SEO and Performance** | Prerendered pages, per-page code splitting, clean URLs, meta tags, Open Graph, XML sitemap, gzip and caching                       |
 
@@ -209,10 +205,10 @@ Build-time settings come from an optional, git-ignored root `.env`: `VITE_SITE_U
 
 Powered by **i18next / react-i18next**. Translations live in [`web/src/locales/`](web/src/locales/) as flat key files and are read through the `useLanguage()` hook's `t()`. Any key missing in the chosen language falls back to English.
 
-| Language | Code  | Status                                                        |
-| -------- | ----- | ------------------------------------------------------------- |
-| English  | `en`  | Complete                                                      |
-| Cebuano  | `ceb` | Partial (about 15% of strings); the rest fall back to English |
+| Language | Code  | Status                                                 |
+| -------- | ----- | ------------------------------------------------------ |
+| English  | `en`  | Complete                                               |
+| Cebuano  | `ceb` | 100% translated (draft awaiting native-speaker review) |
 
 To see what is left to translate, run `node scripts/i18n-report.mjs` (add `--keys <area#|prefix>` for a
 to-do list, or `--json` for machine-readable output).
