@@ -19,6 +19,8 @@ import {
   getAttraction,
   getPhoto,
   photos,
+  readFact,
+  readSection,
 } from '@/lib/tourismData';
 import DahicanBeach from './visit-mati/DahicanBeach';
 
@@ -108,19 +110,68 @@ describe('Visit Mati hub page', () => {
 });
 
 describe('attraction detail page', () => {
-  it('shows the attraction’s photo with its credit and a link to the source', () => {
-    const { container } = render(
+  const renderDahican = () =>
+    render(
       <MemoryRouter>
         <DahicanBeach />
       </MemoryRouter>
     );
+
+  it('leads with the photo, credited with a link to its source', () => {
+    const { container } = renderDahican();
     const photo = getPhoto(getAttraction('dahican-beach')!.photo)!;
     expect(container.querySelector(`img[src="${photo.src}"]`)).toHaveAttribute('alt', photo.alt);
-    expect(screen.getByText('Photo: City Government of Mati')).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /Source/ })).toHaveAttribute(
+    const plate = screen.getByRole('heading', { level: 1, name: 'Dahican Beach' }).parentElement!;
+    expect(within(plate).getByText('Photo: City Government of Mati')).toBeInTheDocument();
+    expect(within(plate).getByRole('link', { name: /Source/ })).toHaveAttribute(
       'href',
       photo.sources[0].url
     );
+  });
+
+  it('says which sections are unconfirmed and what is missing, without editor notes', () => {
+    const { container } = renderDahican();
+    const gettingThere = screen.getByRole('heading', { name: /Getting there/ }).parentElement!;
+    expect(within(gettingThere).getByText('Not confirmed yet')).toBeInTheDocument();
+    expect(gettingThere).toHaveTextContent(/Still to confirm: verified directions/);
+    expect(container.textContent).not.toMatch(/\[Placeholder\]|\bAdd verified\b/);
+  });
+
+  it('links on to every other attraction page', () => {
+    renderDahican();
+    const more = screen.getByRole('heading', { name: 'More places in Mati' }).closest('section')!;
+    const others = featuredAttractions.filter((a) => a.slug !== 'dahican-beach');
+    expect(within(more).getAllByRole('listitem')).toHaveLength(others.length);
+    for (const a of others) {
+      expect(within(more).getByRole('link', { name: new RegExp(a.name) })).toHaveAttribute(
+        'href',
+        `/visit-mati/${a.slug}`
+      );
+    }
+  });
+});
+
+describe('attraction section text', () => {
+  it('splits a placeholder into what is known and what is still to confirm', () => {
+    expect(
+      readSection(
+        '[Placeholder] Dahican is a short ride away. Add verified directions, fares, and travel time.'
+      )
+    ).toEqual({
+      confirmed: false,
+      text: 'Dahican is a short ride away.',
+      toConfirm: ['verified directions, fares, and travel time'],
+    });
+    expect(readSection('Walk the Baywalk.')).toEqual({
+      confirmed: true,
+      text: 'Walk the Baywalk.',
+      toConfirm: [],
+    });
+    expect(readFact('[Hours & fees to verify]')).toEqual({
+      text: 'Hours & fees to verify',
+      toVerify: true,
+    });
+    expect(readFact('Open daily')).toEqual({ text: 'Open daily', toVerify: false });
   });
 });
 

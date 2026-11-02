@@ -165,6 +165,36 @@ export function getPhoto(id: string | undefined): TourismPhoto | undefined {
   return id ? photoById.get(id) : undefined;
 }
 
+export interface SectionCopy {
+  /** False when the feed marks the section "[Placeholder]", awaiting verified details. */
+  confirmed: boolean;
+  /** What the page can say now. */
+  text: string;
+  /** What still needs confirming, taken from the feed's "Add …" notes to editors. */
+  toConfirm: string[];
+}
+
+/**
+ * Splits an attraction section into what visitors can read now and what is still missing.
+ * "[Placeholder] Dahican is a short ride from the city. Add verified directions." gives
+ * text "Dahican is a short ride from the city." and toConfirm ["verified directions"].
+ */
+export function readSection(body: string): SectionCopy {
+  const sentences = body.replace(/^\[Placeholder\]\s*/, '').split(/(?<=\.)\s+/);
+  const isNote = (s: string) => /^Add\s/.test(s);
+  return {
+    confirmed: !body.startsWith('[Placeholder]'),
+    text: sentences.filter((s) => !isNote(s)).join(' '),
+    toConfirm: sentences.filter(isNote).map((s) => s.replace(/^Add\s+/, '').replace(/\.$/, '')),
+  };
+}
+
+/** "[Hours & fees to verify]" → { text: "Hours & fees to verify", toVerify: true }. */
+export function readFact(value: string): { text: string; toVerify: boolean } {
+  const m = /^\[(.+)\]$/.exec(value.trim());
+  return m ? { text: m[1], toVerify: true } : { text: value, toVerify: false };
+}
+
 /** Attractions that get a dedicated detail page, in feed order. */
 export const featuredAttractions: Attraction[] = attractions.filter((a) => a.featured);
 
