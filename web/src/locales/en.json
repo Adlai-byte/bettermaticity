@@ -1837,5 +1837,14 @@
   "works-pages": "Awarded works pages",
   "works-footnote": "Transcribed row by row from the City's “Bid Results on Civil Works” reports (FDP Form 10a) on the DILG Full Disclosure portal. The winning bid is what the contractor offered, not the final contract cost or what was actually spent, and these reports don't say whether the work was finished. Reports for Q2 2024 and Q2–Q4 2025 could not be downloaded from the portal, so their works are missing. One Q1 2026 bid is shown exactly as the City printed it because it can't be read as a number.",
   "projects-major-count_one": "{{count}} major project",
-  "projects-major-count_other": "{{count}} major projects"
+  "projects-major-count_other": "{{count}} major projects",
+  "volunteer-dialog-title": "Help build BetterMati",
+  "volunteer-dialog-desc": "BetterMati.org is a volunteer-built civic project. Designers, developers, writers, and translators are all welcome.",
+  "volunteer-dialog-cta": "Volunteer with us",
+  "service-search-default-placeholder": "Search services (e.g., birth certificate, business permit)",
+  "service-search-no-results": "No services found.",
+  "attraction-not-found": "Attraction not found.",
+  "visit-places-to-go": "Places to go",
+  "visit-when-to-come": "When to come",
+  "visit-plan-your-trip": "Plan your trip"
 }

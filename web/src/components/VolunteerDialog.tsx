@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { HeartHandshake, Mail } from 'lucide-react';
+import { useLanguage } from '@/hooks/useLanguage';
 import {
   Dialog,
   DialogContent,
@@ -14,6 +15,7 @@ const STORAGE_KEY = 'bs-vol-popup-v1';
 // First-visit volunteer invite (localStorage-gated, ~800ms delay). Mirrors the legacy
 // volunteer-popup.js; rebuilt on shadcn Dialog. Client-only (no SSR flash).
 export default function VolunteerDialog() {
+  const { t } = useLanguage();
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -46,10 +48,9 @@ export default function VolunteerDialog() {
           <div className="mb-2 flex size-12 items-center justify-center rounded-full bg-primary/10 text-primary">
             <HeartHandshake className="size-6" aria-hidden="true" />
           </div>
-          <DialogTitle>Help build BetterMati</DialogTitle>
+          <DialogTitle>{t('volunteer-dialog-title')}</DialogTitle>
           <DialogDescription>
-            BetterMati.org is a volunteer-built civic project. Designers, developers, writers, and
-            translators are all welcome.
+            {t('volunteer-dialog-desc')}
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
@@ -59,7 +60,7 @@ export default function VolunteerDialog() {
             onClick={() => dismiss(false)}
           >
             <Mail className="size-4" aria-hidden="true" />
-            Volunteer with us
+            {t('volunteer-dialog-cta')}
           </a>
         </DialogFooter>
       </DialogContent>

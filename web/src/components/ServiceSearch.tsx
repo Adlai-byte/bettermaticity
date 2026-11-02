@@ -75,7 +75,7 @@ export function ServiceSearch({ placeholder, className }: ServiceSearchProps) {
           setQuery(v);
           setOpen(true);
         }}
-        placeholder={placeholder || 'Search services (e.g., birth certificate, business permit)'}
+        placeholder={placeholder || t('service-search-default-placeholder')}
       />
       {showList && (
         <CommandList
@@ -84,7 +84,7 @@ export function ServiceSearch({ placeholder, className }: ServiceSearchProps) {
           onMouseDown={(e) => e.preventDefault()}
           className="absolute top-full -right-px -left-px z-50 mt-1 max-h-80 border border-line bg-white p-1 text-ink shadow-[0_12px_32px_rgba(15,23,42,0.16)]"
         >
-          {results.length === 0 && <CommandEmpty>No services found.</CommandEmpty>}
+          {results.length === 0 && <CommandEmpty>{t('service-search-no-results')}</CommandEmpty>}
           {results.map((s) => (
             <CommandItem
               key={s.id}
